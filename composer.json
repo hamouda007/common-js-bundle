@@ -1,0 +1,22 @@
+{
+    "name": "silverbackis/js-sdk-bundle",
+    "description": "Silverback IS + British Websites JS SDK Bundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "require": {
+        "php": "^7.0.8 || ^7.1",
+        "symfony/framework-bundle": "^3.4 || ^4",
+        "symfony/twig-bundle": "^3.4 || ^4"
+    },
+    "minimum-stability": "RC",
+    "autoload": {
+        "psr-4": {
+            "JsSdkBundle\\": "/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "JsSdkBundle\\Tests\\": "tests/"
+        }
+    }
+}
