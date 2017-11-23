@@ -6,17 +6,22 @@
     "require": {
         "php": "^7.0.8 || ^7.1",
         "symfony/framework-bundle": "^3.4 || ^4",
-        "symfony/twig-bundle": "^3.4 || ^4"
+        "symfony/twig-bundle": "^3.4 || ^4",
+        "symfony/serializer": "^4.0@RC"
+    },
+    "require-dev": {
+        "symfony/yaml": "^3.4 || ^4",
+        "symfony/browser-kit": "^3.4 || ^4.0"
     },
     "minimum-stability": "RC",
     "autoload": {
         "psr-4": {
-            "JsSdkBundle\\": "/"
+            "JsSdkBundle\\": ""
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "JsSdkBundle\\Tests\\": "tests/"
+            "JsSdkBundle\\Tests\\": "Tests/"
         }
     }
 }
