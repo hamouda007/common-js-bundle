@@ -60,13 +60,18 @@ This library is designed to be as flexible as possible. At any point you are abl
 ```
 
 ### SDK Names, Blocks and Configuration Parameters
+
 #### Google Analytics
-| Block | Description | Variables |
+SDK name: **google_analytics**
+
+| SDK Variables | Default | Details |
+| --- | --- | --- |
+| id | n/a (required) | Used in js_sdk_output function to initialise tracking code. E.g. 'UA-12345678' |
+| debug | false | Can enable debug mode on the analytics tracking code |
+| tracking_function | "ga" | The function variable to be used for tracking |
+| currency | "GBP" | Used in extended e-commerce tracking to define the default currency you are recording monetary values with |
+
+| Block | Description | Variables Used |
 | --- | --- | --- |
 | page_view | page view tracking code | tracking_function |
 | ec/init | extended e-commerce tracking initialisation | tracking_function<br>currency |
-
-| Variable | Default |
-| --- | --- |
-| tracking_function | ga |
-| currency | GBP |
