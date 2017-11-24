@@ -28,6 +28,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->scalarNode('id')->cannotBeEmpty()->end()
             ->booleanNode('debug')->defaultFalse()->end()
+            ->scalarNode('currency')->defaultValue('GBP')->end()
         ;
         $this->endSdkNode($rootNode);
     }

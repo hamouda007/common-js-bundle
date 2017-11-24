@@ -23,13 +23,12 @@ class TestControllerTest extends WebTestCase
         $client = $this->getClient($env);
         $crawler = $this->assertUri($client, '/google-analytics');
 
-        // test each variable exists in the template
+        // test contents for knwon strings that should exist
         $data = $this->getParsedConfig($env);
         $this->assertResponseContains($client, [
-            $data['id'],
-            'pageview'
+            "The Google tracking ID is not being read in properly" => $data['id'],
+            "The Google tracking code is not all included or is not in the correct order" => "ga('set', 'currencyCode', 'GBP');\nga('send', 'pageview');"
         ]);
-
     }
 
     private function getParsedConfig(string $env)
@@ -43,8 +42,8 @@ class TestControllerTest extends WebTestCase
         if (!is_array($datum)) {
             $datum = [$datum];
         }
-        foreach ($datum as $data) {
-            $this->assertContains($data, $client->getResponse()->getContent());
+        foreach ($datum as $message=>$data) {
+            $this->assertContains($data, $client->getResponse()->getContent(), $message);
         }
     }
 
@@ -59,7 +58,7 @@ class TestControllerTest extends WebTestCase
     private function assertUri(Client $client, $uri)
     {
         $crawler = $client->request('GET', $uri);
-        $this->assertTrue($client->getResponse()->isSuccessful());
+        $this->assertTrue($client->getResponse()->isSuccessful(), "Test URI '$uri' does not return a successful HTTP status code");
         return $crawler;
     }
 

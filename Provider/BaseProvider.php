@@ -61,11 +61,16 @@ abstract class BaseProvider implements ProviderInterface
         return '@JsSdk/blocks/' . $this->getBlockName() . '/';
     }
 
-    public function getBlockTwigParams(string $blockPath, array $args): TwigParams
+    public function getBlockTwigParams(string $blockPath, array $args = []): TwigParams
     {
+        $allTwigArgs = array_merge(
+            $this->getTwigArgs() ?: [],
+            $args
+        );
+
         return new TwigParams(
             $this->getBlockPath() . 'js/' . $blockPath . '.js.twig',
-            $args
+            $allTwigArgs
         );
     }
 
