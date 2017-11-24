@@ -32,7 +32,7 @@ You can duplicate an SDK block in its current state at any point in the Twig tem
 
 You can also remove a block (if you've duplicated a block but want to remove a specific section for example)
 ```twig
-{{ js_sdk_remove(sdk_name, sdk_block_name) }}
+{{ js_sdk_remove_block(sdk_name, sdk_block_name) }}
 ```
 
 ### Example with Google Analytics
