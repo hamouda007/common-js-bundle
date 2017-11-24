@@ -35,10 +35,12 @@ class JsSdkExtension extends Extension
         $converter = BaseProvider::getConverter();
         $provider = $container->getDefinition(ProviderServiceProvider::class);
         foreach ($config as $snakeCaseBlock => $data) {
-            $providerClass = $converter->denormalizeToProviderClassName($snakeCaseBlock);
-            $def = $container->getDefinition($providerClass);
-            $def->addMethodCall('setTwigArgs', [$data]);
-            $provider->addMethodCall('addProvider', [ new Reference($providerClass) ]);
+            if ($data['enabled']) {
+                $providerClass = $converter->denormalizeToProviderClassName($snakeCaseBlock);
+                $def = $container->getDefinition($providerClass);
+                $def->addMethodCall('setTwigArgs', [$data]);
+                $provider->addMethodCall('addProvider', [ new Reference($providerClass) ]);
+            }
         }
     }
 }
