@@ -41,14 +41,25 @@ interface ProviderInterface
 
     /**
      * @param string $blockPath
-     * @param string $block
      * @param string|null $atBlockPath
      * @param bool $prepend
+     * @param array $args
      */
-    function addScriptBlock(string $blockPath, string $block, string $atBlockPath = null, bool $prepend = false): void;
+    function addScriptBlock(string $blockPath, string $atBlockPath = null, bool $prepend = false, array $args = []): void;
 
     /**
-     * @return TwigParams
+     * @param string $blockPath
      */
-    function getOutputTwigParams(): TwigParams;
+    function removeScriptBlock(string $blockPath): void;
+
+    /**
+     * @param array $twigArgs
+     * @return string
+     */
+    function renderSdk(array $twigArgs = []): string;
+
+    /**
+     * @param array $twigArgs
+     */
+    function setScriptBlockTwigArgs(array $twigArgs = []): void;
 }

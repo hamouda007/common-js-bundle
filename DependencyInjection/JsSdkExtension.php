@@ -3,7 +3,7 @@
 namespace JsSdkBundle\DependencyInjection;
 
 use JsSdkBundle\Provider\BaseProvider;
-use JsSdkBundle\Utils\ProviderServiceProvider;
+use JsSdkBundle\ServiceProvider\ServiceProvider;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -33,7 +33,7 @@ class JsSdkExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $converter = BaseProvider::getConverter();
-        $provider = $container->getDefinition(ProviderServiceProvider::class);
+        $provider = $container->getDefinition(ServiceProvider::class);
         foreach ($config as $snakeCaseBlock => $data) {
             if ($data['enabled']) {
                 $providerClass = $converter->denormalizeToProviderClassName($snakeCaseBlock);

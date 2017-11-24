@@ -29,6 +29,7 @@ class Configuration implements ConfigurationInterface
             ->scalarNode('id')->cannotBeEmpty()->end()
             ->booleanNode('debug')->defaultFalse()->end()
             ->scalarNode('currency')->defaultValue('GBP')->end()
+            ->scalarNode('tracking_function')->defaultValue('ga')->end()
         ;
         $this->endSdkNode($rootNode);
     }

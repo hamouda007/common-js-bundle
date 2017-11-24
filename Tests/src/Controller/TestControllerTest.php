@@ -27,8 +27,14 @@ class TestControllerTest extends WebTestCase
         $data = $this->getParsedConfig($env);
         $this->assertResponseContains($client, [
             "The Google tracking ID is not being read in properly" => $data['id'],
-            "The Google tracking code is not all included or is not in the correct order" => "ga('set', 'currencyCode', 'GBP');\nga('send', 'pageview');"
+            "The debug parameter is not being implemented properly for Google Analytics" => '\'https://www.google-analytics.com/analytics_debug.js\'',
+            "The Google tracking code is not all included or is not in the correct order" => "ga('set', 'currencyCode', 'GBP');\nga('send', 'pageview');",
+            "A second Google tracking ID is not inserted into the template as expected" => 'UA-98765432',
+            "Overriding the analytics function from the twig template is not working correctly" => 'ga_extra(\'send\', \'pageview\');',
+            "Initialising a second analytics function with a different variable name from the twig template is not working properly" => 'analytics_debug.js\', \'ga_extra\'',
         ]);
+        $this->assertContains('ga_extra(\'set\', \'currencyCode\', \'GBP\');', $client->getResponse()->getContent(), "The ec/init block for ga_extra should have been cloned");
+        $this->assertNotContains('ga_extra_extra(\'set\', \'currencyCode\', \'GBP\');', $client->getResponse()->getContent(), "The ec/init block for ga_extra should have been removed");
     }
 
     public function testMissingParameterException()

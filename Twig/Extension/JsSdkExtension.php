@@ -4,32 +4,35 @@ namespace JsSdkBundle\Twig\Extension;
 
 use JsSdkBundle\Provider\BaseProvider;
 use JsSdkBundle\Provider\ProviderInterface;
-use JsSdkBundle\Utils\ProviderServiceProvider;
+use JsSdkBundle\Renderer\TwigParamsRenderer;
+use JsSdkBundle\ServiceProvider\ServiceProvider;
 
 class JsSdkExtension extends \Twig_Extension
 {
     /**
-     * @var ProviderServiceProvider
+     * @var ServiceProvider
      */
     private $providerServiceProvider;
 
     public function __construct(
-        ProviderServiceProvider $providerServiceProvider
+        ServiceProvider $providerServiceProvider,
+        TwigParamsRenderer $twigParamsRenderer,
+        \Twig_Environment $environment
     )
     {
         $this->providerServiceProvider = $providerServiceProvider;
+        $twigParamsRenderer::setTwigEnvironment($environment);
     }
 
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('js_sdk_add_block', array($this, 'addBlock'), [
-                'needs_environment' => true
-            ]),
+            new \Twig_SimpleFunction('js_sdk_add_block', array($this, 'addBlock')),
             new \Twig_SimpleFunction('js_sdk_output', array($this, 'output'), [
-                'is_safe' => ['html'],
-                'needs_environment' => true
+                'is_safe' => ['html']
             ]),
+            new \Twig_SimpleFunction('js_sdk_duplicate', array($this, 'duplicate')),
+            new \Twig_SimpleFunction('js_sdk_remove_block', array($this, 'removeBlock'))
         ];
     }
 
@@ -43,22 +46,40 @@ class JsSdkExtension extends \Twig_Extension
         return $this->providerServiceProvider->getProvider($providerClassName);
     }
 
-    public function addBlock(\Twig_Environment $twig, string $sdk, string $block, string $atBlockPath = null, bool $prepend = false, array $args = []): void
+    public function addBlock(string $sdk, string $block, string $atBlockPath = null, bool $prepend = false, array $args = []): void
     {
         $provider = $this->getProvider($sdk);
-        $TwigParams = $provider->getBlockTwigParams($block, $args);
-        $scripts = $twig->render($TwigParams->getPath(), $TwigParams->getArguments());
-        $provider->addScriptBlock($block, $scripts, $atBlockPath, $prepend);
+        $provider->addScriptBlock($block, $atBlockPath, $prepend, $args);
     }
 
-    public function output(\Twig_Environment $twig, string $sdk)
+    /**
+     * @param string $sdk
+     * @param string $block
+     */
+    public function removeBlock(string $sdk, string $block): void
     {
         $provider = $this->getProvider($sdk);
-        $TwigParams = $provider->getOutputTwigParams();
-        try {
-            return $twig->render($TwigParams->getPath(), $TwigParams->getArguments());
-        } catch(\Twig_Error_Runtime $e) {
-            throw new \Twig_Error_Runtime('One of the js_sdk blocks you are trying to include has not been fully configured and is missing an option. For `'.$sdk.'`: ' . $e->getMessage());
-        }
+        $provider->removeScriptBlock($block);
+    }
+
+    public function output(string $sdk, array $twigArgs = [])
+    {
+        $provider = $this->getProvider($sdk);
+        return $provider->renderSdk($twigArgs);
+    }
+
+    public function duplicate(string $sdk, string $newSdkName, array $twigArgs = [])
+    {
+        $provider = $this->getProvider($sdk);
+        $newProvider = clone $provider;
+
+        $newProvider->setTwigArgs(array_merge(
+            $newProvider->getTwigArgs(),
+            $twigArgs
+        ));
+        $newProvider->setScriptBlockTwigArgs($twigArgs);
+
+        $providerClassName = BaseProvider::getConverter()->denormalizeToProviderClassName($newSdkName);
+        $this->providerServiceProvider->addProvider($newProvider, $providerClassName);
     }
 }

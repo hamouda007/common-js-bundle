@@ -12,14 +12,20 @@ class TwigParams
      * @var array
      */
     private $arguments;
+    /**
+     * @var string
+     */
+    private $sdk;
 
     public function __construct(
         $path = '',
-        $arguments = []
+        $arguments = [],
+        string $sdk = ''
     )
     {
         $this->path = $path;
         $this->arguments = $arguments;
+        $this->sdk = $sdk;
     }
 
     /**
@@ -52,5 +58,21 @@ class TwigParams
     public function setArguments(array $arguments)
     {
         $this->arguments = $arguments;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSdk(): string
+    {
+        return $this->sdk;
+    }
+
+    /**
+     * @param string $sdk
+     */
+    public function setSdk(string $sdk)
+    {
+        $this->sdk = $sdk;
     }
 }
