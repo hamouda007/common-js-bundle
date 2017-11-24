@@ -64,7 +64,7 @@ This library is designed to be as flexible as possible. At any point you are abl
 #### Google Analytics
 SDK name: **google_analytics**
 
-| SDK Variables | Default | Details |
+| Parameter | Default | Details |
 | --- | --- | --- |
 | id | n/a (required) | Used in js_sdk_output function to initialise tracking code. E.g. 'UA-12345678' |
 | debug | false | Can enable debug mode on the analytics tracking code |
