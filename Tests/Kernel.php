@@ -26,7 +26,7 @@ class Kernel extends BaseKernel
 
     public function getProjectDir()
     {
-        return parent::getProjectDir() . '/Tests/JsSdkBundle';
+        return parent::getProjectDir() . '/Tests';
     }
 
     public function registerBundles()
@@ -61,7 +61,6 @@ class Kernel extends BaseKernel
         if (is_dir($confDir.'/routes/'.$this->environment)) {
             $routes->import($confDir.'/routes/'.$this->environment.'/**/*'.self::CONFIG_EXTS, '/', 'glob');
         }
-        echo($confDir.'/routes'.self::CONFIG_EXTS);
         $routes->import($confDir.'/routes'.self::CONFIG_EXTS, '/', 'glob');
     }
 }

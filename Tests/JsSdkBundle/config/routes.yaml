@@ -1,7 +1,0 @@
-#test:
-#    path:     /
-#    defaults: { _controller: TestBundle:Test:test }
-
-test_empty:
-    path:     /empty
-    defaults: { _controller: 'JsSdkBundle\Tests\TestBundle\Controller\TestController::testEmpty' }

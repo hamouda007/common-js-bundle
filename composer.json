@@ -7,11 +7,15 @@
         "php": "^7.0.8 || ^7.1",
         "symfony/framework-bundle": "^3.4 || ^4",
         "symfony/twig-bundle": "^3.4 || ^4",
-        "symfony/serializer": "^3.4 || ^4"
+        "symfony/serializer": "^3.4 || ^4",
+        "symfony/templating": "^4.0@RC"
     },
     "require-dev": {
         "symfony/yaml": "^3.4 || ^4",
-        "symfony/browser-kit": "^3.4 || ^4"
+        "symfony/browser-kit": "^3.4 || ^4",
+        "sensio/framework-extra-bundle": "^5.0",
+        "symfony/css-selector": "^4.0@RC",
+        "symfony/phpunit-bridge": "^4.0@RC"
     },
     "minimum-stability": "RC",
     "autoload": {

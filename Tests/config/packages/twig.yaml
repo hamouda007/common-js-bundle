@@ -1,0 +1,4 @@
+twig:
+    cache:  false
+    paths:
+        '%kernel.project_dir%/templates': Test

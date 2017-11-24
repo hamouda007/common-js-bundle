@@ -4,5 +4,5 @@
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics{{ debug ? '_debug' : '' }}.js','ga');
   ga('create', '{{ id }}', '{{ app.request.httpHost }}');
-  {% block scripts %}{% endblock %}
+  {{ scripts }}
 </script>

@@ -26,7 +26,7 @@ class Configuration implements ConfigurationInterface
     {
         $rootNode = $this->addSDKNode($rootNode, 'google_analytics');
         $rootNode
-            ->scalarNode('id')->end()
+            ->scalarNode('id')->cannotBeEmpty()->end()
             ->booleanNode('debug')->defaultFalse()->end()
         ;
         $this->endSdkNode($rootNode);

@@ -4,9 +4,12 @@
     xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.3/phpunit.xsd"
     backupGlobals="false"
     colors="true"
-    bootstrap="vendor/autoload.php" >
+    bootstrap="Tests/bootstrap.php" >
+    <php>
+        <env name="BOOTSTRAP_CLEAR_CACHE_ENV" value="empty,google_analytics" />
+    </php>
     <testsuites>
-        <testsuite name="BW Base Bundle Test Suite">
+        <testsuite name="JS SDK Bundle Test Suite">
             <directory>./Tests/</directory>
         </testsuite>
     </testsuites>

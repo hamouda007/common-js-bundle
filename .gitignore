@@ -2,4 +2,4 @@
 /composer.lock
 /vendor/
 /var/
-/Tests/JsSdkBundle/var/
+/Tests/var/
