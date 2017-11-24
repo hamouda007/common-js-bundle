@@ -61,53 +61,12 @@ This library is designed to be as flexible as possible. At any point you are abl
 
 ### SDK Names, Blocks and Configuration Parameters
 #### Google Analytics
+| Block | Description | Variables |
+| --- | --- | --- |
+| page_view | page view tracking code | tracking_function |
+| ec/init | extended e-commerce tracking initialisation | tracking_function<br>currency |
 
-<table>
-  <thead>
-    <tr>
-      <th>Block</th>
-      <th>Description</th>
-      <th>Variables</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>page_view</td>
-      <td>page view tracking code</td>
-      <td>
-        <ul>
-          <li>tracking_function</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>ec/init</td>
-      <td>extended e-commerce tracking initialisation</td>
-      <td>
-        <ul>
-          <li>tracking_function</li>
-          <li>currency</li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<table>
-  <thead>
-    <tr>
-      <th>Variable</th>
-      <th>Default</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>tracking_function</td>
-      <td>ga</td>
-    </tr>
-    <tr>
-      <td>currency</td>
-      <td>GBP</td>
-    </tr>
-  </tbody>
-</table>
+| Variable | Default |
+| --- | --- |
+| tracking_function | ga |
+| currency | GBP |
