@@ -43,7 +43,7 @@ class JsSdkExtension extends \Twig_Extension
         return $this->providerServiceProvider->getProvider($providerClassName);
     }
 
-    public function addBlock(\Twig_Environment $twig, string $sdk, string $block, array $args = [], string $atBlockPath = null, bool $prepend = false): void
+    public function addBlock(\Twig_Environment $twig, string $sdk, string $block, string $atBlockPath = null, bool $prepend = false, array $args = []): void
     {
         $provider = $this->getProvider($sdk);
         $TwigParams = $provider->getBlockTwigParams($block, $args);
