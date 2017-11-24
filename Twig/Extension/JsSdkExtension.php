@@ -55,6 +55,10 @@ class JsSdkExtension extends \Twig_Extension
     {
         $provider = $this->getProvider($sdk);
         $TwigParams = $provider->getOutputTwigParams();
-        return $twig->render($TwigParams->getPath(), $TwigParams->getArguments());
+        try {
+            return $twig->render($TwigParams->getPath(), $TwigParams->getArguments());
+        } catch(\Twig_Error_Runtime $e) {
+            throw new \Twig_Error_Runtime('One of the js_sdk blocks you are trying to include has not been fully configured and is missing an option. For `'.$sdk.'`: ' . $e->getMessage());
+        }
     }
 }

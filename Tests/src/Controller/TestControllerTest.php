@@ -31,6 +31,17 @@ class TestControllerTest extends WebTestCase
         ]);
     }
 
+    public function testMissingParameterException()
+    {
+        $env = 'empty';
+        $client = $this->getClient($env);
+        $crawler = $this->assertUri($client, '/google-analytics', false);
+        $this->assertEquals(500, $client->getResponse()->getStatusCode(), "With twig strict variables, a 500 response should be returned as some twig variables are missing");
+        $this->assertResponseContains($client, [
+            "The error response should be customised to give more information about which block in js_sdk is missing a variable" => 'js_sdk blocks'
+        ]);
+    }
+
     private function getParsedConfig(string $env)
     {
         $data = Yaml::parse(file_get_contents(__DIR__ . '/../../config/packages/' . $env . '/js_sdk.yaml'));
@@ -55,10 +66,12 @@ class TestControllerTest extends WebTestCase
         ));
     }
 
-    private function assertUri(Client $client, $uri)
+    private function assertUri(Client $client, $uri, bool $assertSuccess = true)
     {
         $crawler = $client->request('GET', $uri);
-        $this->assertTrue($client->getResponse()->isSuccessful(), "Test URI '$uri' does not return a successful HTTP status code");
+        if ($assertSuccess) {
+            $this->assertTrue($client->getResponse()->isSuccessful(), "Test URI '$uri' does not return a successful HTTP status code");
+        }
         return $crawler;
     }
 
