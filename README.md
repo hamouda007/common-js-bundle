@@ -35,7 +35,7 @@ You can also remove a block (if you've duplicated a block but want to remove a s
 {{ js_sdk_remove_block(sdk_name, sdk_block_name) }}
 ```
 
-### Example with Google Analytics
+## Google Analytics Example
 The first SDK implemented is for Google Analytics. Here is an example of how you may end up using the functions.
 
 This will state that when you output the google_analytics sdk, you want to include the page_view block:
@@ -59,9 +59,35 @@ This library is designed to be as flexible as possible. At any point you are abl
 {{ js_sdk_output('analytics_two') }}
 ```
 
-### SDK Names, Blocks and Configuration Parameters
+Each parameter for an SDK can be configured in your *js_sdk.yaml* file. This is an example for Google Analytics. Not all parameters are required. You will need to set `enabled` to `true` for any SDK you want to use.
+```yaml
+# config/packages/js_sdk.yaml
+js_sdk:
+    google_analytics:
+        enabled: true
+        id: UA-12452352
+        currency: USD
+```
 
-#### Google Analytics
+## SDK Names, Blocks and Configuration Parameters
+Some parameters are common across all SDKs
+| Parameter | Default | Details |
+| --- | --- | --- |
+| enabled | false | Enable the SDK |
+| default_blocks | false | Can be an array of blocks you want. You can also include parameters if you want |
+
+```yaml
+js_sdk:
+    sdk_name:
+        enabled: true
+        default_blocks:
+            block_name: ~
+            "another/block_name":
+                param1: value1
+                param2: value2
+```
+
+### Google Analytics
 SDK name: **google_analytics**
 
 | Parameter | Default | Details |
