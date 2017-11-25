@@ -42,6 +42,15 @@ class Configuration implements ConfigurationInterface
                     ->normalizeKeys(false)
                     ->canBeEnabled()
                     ->children()
+                        ->arrayNode('default_blocks')
+                            ->normalizeKeys(false)
+                            ->useAttributeAsKey('block_name')
+                            ->arrayPrototype()
+                                ->normalizeKeys(false)
+                                ->useAttributeAsKey('param_name')
+                                ->scalarPrototype()->end()
+                            ->end()
+                        ->end()
         ;
     }
 

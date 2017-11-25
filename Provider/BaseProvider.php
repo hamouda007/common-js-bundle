@@ -82,7 +82,8 @@ abstract class BaseProvider implements ProviderInterface
 
         return new TwigParams(
             $this->getBlockPath() . 'js/' . $blockPath . '.js.twig',
-            $allTwigArgs
+            $allTwigArgs,
+            $this->getBlockName() . "::" . $blockPath
         );
     }
 
@@ -145,7 +146,8 @@ abstract class BaseProvider implements ProviderInterface
 
         $outputTwigParams = new TwigParams(
             $this->getBlockPath() . 'init.html.twig',
-            $allTwigArgs
+            $allTwigArgs,
+            $this->getBlockName()
         );
         return $this->twigParamsRenderer->render($outputTwigParams);
     }

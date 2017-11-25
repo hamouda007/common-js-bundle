@@ -70,7 +70,7 @@ js_sdk:
 ```
 
 ## SDK Names, Blocks and Configuration Parameters
-Some parameters are common across all SDKs. You cannot pass the `default_blocks` variable in via the twig template, but you can still remove and modify the default blocks from the template.
+Some parameters are common across all SDKs. You cannot pass the `default_blocks` variable in via the twig template, but you can still remove and modify the default blocks from the template using `js_sdk_add_block()` and `js_sdk_remove_block()` functions
 
 | Parameter | Default | Details |
 | --- | --- | --- |

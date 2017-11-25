@@ -76,7 +76,7 @@ class TestControllerTest extends WebTestCase
     {
         $crawler = $client->request('GET', $uri);
         if ($assertSuccess) {
-            $this->assertTrue($client->getResponse()->isSuccessful(), "Test URI '$uri' does not return a successful HTTP status code");
+            $this->assertTrue($client->getResponse()->isSuccessful(), "Test URI '$uri' does not return a successful HTTP status code " . $client->getResponse()->getContent());
         }
         return $crawler;
     }

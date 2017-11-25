@@ -3,3 +3,4 @@ js_sdk:
         enabled: true
         id: UA-12345678
         debug: true
+        default_blocks: ~

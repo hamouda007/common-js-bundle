@@ -31,14 +31,23 @@ class JsSdkExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
-
         $converter = BaseProvider::getConverter();
         $provider = $container->getDefinition(ServiceProvider::class);
         foreach ($config as $snakeCaseBlock => $data) {
             if ($data['enabled']) {
                 $providerClass = $converter->denormalizeToProviderClassName($snakeCaseBlock);
                 $def = $container->getDefinition($providerClass);
+                $blocks = null;
+                if (isset($data['default_blocks'])) {
+                    $blocks = $data['default_blocks'];
+                    unset($data['default_blocks']);
+                }
                 $def->addMethodCall('setTwigArgs', [$data]);
+                if ($blocks) {
+                    foreach ($blocks as $blockName => $blockArgs) {
+                        $def->addMethodCall('addScriptBlock', [$blockName, null, false, $blockArgs]);
+                    }
+                }
                 $provider->addMethodCall('addProvider', [ new Reference($providerClass) ]);
             }
         }
