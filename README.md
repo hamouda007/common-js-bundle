@@ -71,6 +71,7 @@ js_sdk:
 
 ## SDK Names, Blocks and Configuration Parameters
 Some parameters are common across all SDKs
+
 | Parameter | Default | Details |
 | --- | --- | --- |
 | enabled | false | Enable the SDK |
