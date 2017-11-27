@@ -1,4 +1,6 @@
 # BW Javascript SDK Bundle
+**This bundle is currently under development but there will be a release shortly, firstly with just the Google Analytics SDK**
+
 This bundle provides twig functions to easily add common Javascript SDK tags to any page.
 
 It has been structured to be easily expanded for whatever SDKs you may want. Out of the box this bundle will support Google Analytics, Woopra, Facebook, Facebook Pixel and Twitter.
@@ -7,7 +9,6 @@ This bundle is only configured and tested to be used for Symfony >=3.4 using Sym
 
 ## Installation
 This bundle will be submitted to the Symfony Flex contrib repository shortly. Until then you'll have to add the bundle into your bundles.php file manually.
-*This bundle is currently under development but there will be a release shortly*
 ```bash
 composer req silverbackis/js-sdk-bundle@dev
 ```
@@ -103,31 +104,11 @@ js_sdk:
                 param2: value2
 ```
 
-### Google Analytics
-SDK name: **google_analytics**
+### JS SDK Docs
+[Google Analytics](Docs/GoogleAnalytics.md)
 
-#### Models
-##### JsSdkBundle\Model\GoogleAnalytics\Event
-- category
-- action
-- label
-- transport
-- nonInteraction
+### Other JS SDKs
+I have not implemented the other planned Javascript SDKs at the moment. Feel free to submit a PR if you're able to help or have another SDK suggestion (or indeed you have any more features or improvements you'd like to see in what is already implemented)
 
-#### Reference
-| Parameter | Default | Details |
-| :--- | :--- | :--- |
-| id | n/a (required) | Used in js_sdk_output function to initialise tracking code. E.g. 'UA-12345678' |
-| debug | false | Can enable debug mode on the analytics tracking code |
-| tracking_function | "ga" | The function variable to be used for tracking |
-| currency | "GBP" | Used in extended e-commerce tracking to define the default currency you are recording monetary values with |
-| event | n/a | This should be an instance of the Event model **(required for event block)** |
-| key | n/a | String - key of variable to set **(required for set block)** |
-| value | n/a | String - value of the variable to set **(required for set block)** |
-
-| Block | Description | Variables Used
-| :--- | :--- | :--- |
-| page_view | page view tracking code | tracking_function |
-| event | send an event to track | tracking_function<br>event |
-| ec/init | extended e-commerce tracking initialisation | tracking_function<br>currency |
-| set | sets an analytics variable | key<br>value |
+### Contributing an SDK
+Adding an SDK is pretty straight forwards. A new Provider is required in `JsSdkBundle\Provider\Sdk` extending `JsSdkBundle\Provider\BaseProvider`. In the dependency injection new configuration parameters may be required and models can be added in the `JsSdkBundle\Model\PascalCaseSdkName` namespace where PascalCaseSdkName is the name of the SDK in Pascal Case. Template blocks are added in `Resources/views/blocks/sdk_snake_case_name` with an `init.html.twig` file and then a sub directory `js` for all blocks needed.
