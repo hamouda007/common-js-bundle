@@ -57,7 +57,7 @@ class JsSdkExtension extends \Twig_Extension
      * @param array $args
      * @return null|string
      */
-    public function addBlock(string $sdk, string $block, string $atBlockPath = null, bool $prepend = false, array $args = []): ?string
+    public function addBlock(string $sdk, string $block, string $atBlockPath = null, bool $prepend = false, array $args = [])
     {
         $provider = $this->getProvider($sdk);
         return $provider->addScriptBlock($block, $atBlockPath, $prepend, $args);

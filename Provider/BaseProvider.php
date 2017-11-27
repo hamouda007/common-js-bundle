@@ -41,7 +41,7 @@ abstract class BaseProvider implements ProviderInterface
         $this->twigArgs = $twigArgs;
     }
 
-    public function getTwigArgs(): ?array
+    public function getTwigArgs()
     {
         return $this->twigArgs;
     }
@@ -98,7 +98,7 @@ abstract class BaseProvider implements ProviderInterface
      * @param bool $prepend
      * @param array $args
      */
-    public function addScriptBlock(string $blockPath, string $atBlockPath = null, bool $prepend = false, array $args = []): ?string
+    public function addScriptBlock(string $blockPath, string $atBlockPath = null, bool $prepend = false, array $args = [])
     {
         $twigParams = $this->getBlockTwigParams($blockPath, $args);
         if ($atBlockPath === "false") {

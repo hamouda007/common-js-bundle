@@ -15,7 +15,7 @@ interface ProviderInterface
     /**
      * @return array|null
      */
-    function getTwigArgs(): ?array;
+    function getTwigArgs();
 
     /**
      * @return ProviderClassNameConverterInterface
@@ -50,7 +50,7 @@ interface ProviderInterface
      * @param bool $prepend
      * @param array $args
      */
-    function addScriptBlock(string $blockPath, string $atBlockPath = null, bool $prepend = false, array $args = []):  ?string;
+    function addScriptBlock(string $blockPath, string $atBlockPath = null, bool $prepend = false, array $args = []);
 
     /**
      * @param string $blockPath
