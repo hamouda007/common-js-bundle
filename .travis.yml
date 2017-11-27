@@ -2,8 +2,6 @@ language: php
 php:
   - '7.0.8'
   - '7.1'
-  - hhvm # on Trusty only
-  - nightly
 before_script:
   - curl -sSf -o ~/.phpenv/versions/hhvm/bin/phpunit https://phar.phpunit.de/phpunit-5.7.phar
 env:
@@ -12,6 +10,7 @@ env:
   - SYMFONY_VERSION=dev-master
 install:
   - composer require symfony/framework-bundle:${SYMFONY_VERSION}
+  - composer install
 notifications:
   email:
     - daniel@silverback.is
