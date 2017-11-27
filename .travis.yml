@@ -1,0 +1,17 @@
+language: php
+php:
+  - '7.0.8'
+  - '7.1'
+  - hhvm # on Trusty only
+  - nightly
+before_script:
+  - curl -sSf -o ~/.phpenv/versions/hhvm/bin/phpunit https://phar.phpunit.de/phpunit-5.7.phar
+env:
+  - SYMFONY_VERSION="3.4.*"
+  - SYMFONY_VERSION="4.1.*"
+  - SYMFONY_VERSION=dev-master
+install:
+  - composer require symfony/framework-bundle:${SYMFONY_VERSION}
+notifications:
+  email:
+    - daniel@silverback.is
