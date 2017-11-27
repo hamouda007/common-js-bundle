@@ -8,6 +8,9 @@
     <php>
         <env name="BOOTSTRAP_CLEAR_CACHE_ENV" value="empty,google_analytics" />
     </php>
+    <logging>
+        <log type="coverage-clover" target="clover.xml"/>
+    </logging>
     <testsuites>
         <testsuite name="JS SDK Bundle Test Suite">
             <directory>./Tests/</directory>

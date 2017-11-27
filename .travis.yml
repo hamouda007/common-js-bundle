@@ -25,7 +25,6 @@ before_script:
 
 script:
     - vendor/bin/simple-phpunit
-    - phpunit --coverage-clover=coverage.xml
 
 notifications:
     email:
