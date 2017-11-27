@@ -1,8 +1,11 @@
 # BW Javascript SDK Bundle
-**This bundle is currently under development but there will be a release shortly, firstly with just the Google Analytics SDK**
+**Only Google Analytics Implemented So Far**
 
 [![Build Status](https://travis-ci.org/silverbackis/js-sdk-bundle.svg?branch=master)](https://travis-ci.org/silverbackis/js-sdk-bundle)
 [![codecov](https://codecov.io/gh/silverbackis/js-sdk-bundle/branch/master/graph/badge.svg)](https://codecov.io/gh/silverbackis/js-sdk-bundle)
+
+[![Latest Stable Version](https://poser.pugx.org/silverbackis/js-sdk-bundle/version)](https://packagist.org/packages/phpunit/phpunit)
+[![Latest Unstable Version](https://poser.pugx.org/silverbackis/js-sdk-bundle/v/unstable)](//packagist.org/packages/phpunit/phpunit)
 [![License](https://poser.pugx.org/silverbackis/js-sdk-bundle/license)](https://packagist.org/packages/silverbackis/js-sdk-bundle)
 
 This bundle provides twig functions to easily add common Javascript SDK tags to any page.
