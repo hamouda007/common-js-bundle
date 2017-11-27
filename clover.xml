@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1511793657">
+  <project timestamp="1511793657">
+    <package name="JsSdkBundle\Tests">
+      <file name="/Volumes/LaCie/GitHub/_Bundles/js-sdk-bundle/Tests/Kernel.php">
+        <class name="Kernel" namespace="JsSdkBundle\Tests">
+          <metrics complexity="12" methods="6" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="22" elements="30" coveredelements="27"/>
+        </class>
+        <line num="17" type="method" name="getCacheDir" visibility="public" complexity="1" crap="1" count="7"/>
+        <line num="19" type="stmt" count="7"/>
+        <line num="22" type="method" name="getLogDir" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="24" type="stmt" count="2"/>
+        <line num="27" type="method" name="getProjectDir" visibility="public" complexity="1" crap="1" count="7"/>
+        <line num="29" type="stmt" count="7"/>
+        <line num="32" type="method" name="registerBundles" visibility="public" complexity="4" crap="4" count="7"/>
+        <line num="34" type="stmt" count="7"/>
+        <line num="35" type="stmt" count="7"/>
+        <line num="36" type="stmt" count="7"/>
+        <line num="37" type="stmt" count="7"/>
+        <line num="40" type="stmt" count="7"/>
+        <line num="42" type="method" name="configureContainer" visibility="protected" complexity="2" crap="2" count="2"/>
+        <line num="44" type="stmt" count="2"/>
+        <line num="45" type="stmt" count="2"/>
+        <line num="46" type="stmt" count="2"/>
+        <line num="47" type="stmt" count="2"/>
+        <line num="48" type="stmt" count="2"/>
+        <line num="49" type="stmt" count="2"/>
+        <line num="51" type="stmt" count="2"/>
+        <line num="52" type="stmt" count="2"/>
+        <line num="53" type="stmt" count="2"/>
+        <line num="55" type="method" name="configureRoutes" visibility="protected" complexity="3" crap="3.21" count="2"/>
+        <line num="57" type="stmt" count="2"/>
+        <line num="58" type="stmt" count="2"/>
+        <line num="59" type="stmt" count="0"/>
+        <line num="61" type="stmt" count="2"/>
+        <line num="62" type="stmt" count="0"/>
+        <line num="64" type="stmt" count="2"/>
+        <line num="65" type="stmt" count="2"/>
+        <metrics loc="66" ncloc="66" classes="1" methods="6" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="22" elements="30" coveredelements="27"/>
+      </file>
+    </package>
+    <file name="/Volumes/LaCie/GitHub/_Bundles/js-sdk-bundle/Tests/config/bundles.php">
+      <line num="4" type="stmt" count="7"/>
+      <metrics loc="9" ncloc="9" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="1" coveredelements="1"/>
+    </file>
+    <file name="/Volumes/LaCie/GitHub/_Bundles/js-sdk-bundle/Tests/config/routes.php">
+      <line num="9" type="stmt" count="2"/>
+      <line num="10" type="stmt" count="2"/>
+      <metrics loc="10" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="2" coveredelements="2"/>
+    </file>
+    <package name="JsSdkBundle\Tests\src\Controller">
+      <file name="/Volumes/LaCie/GitHub/_Bundles/js-sdk-bundle/Tests/src/Controller/TestController.php">
+        <class name="TestController" namespace="JsSdkBundle\Tests\src\Controller">
+          <metrics complexity="6" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="12" coveredelements="12"/>
+        </class>
+        <line num="14" type="method" name="googleAnalytics" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="16" type="stmt" count="2"/>
+        <line num="23" type="method" name="googleAnalyticsDuplicate" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="25" type="stmt" count="1"/>
+        <line num="32" type="method" name="googleAnalyticsSet" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="34" type="stmt" count="1"/>
+        <line num="41" type="method" name="googleAnalyticsEvent" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="43" type="stmt" count="1"/>
+        <line num="50" type="method" name="googleAnalyticsReturnJsFromBlock" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="52" type="stmt" count="1"/>
+        <line num="59" type="method" name="emptyAction" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="61" type="stmt" count="1"/>
+        <metrics loc="63" ncloc="39" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="12" coveredelements="12"/>
+      </file>
+    </package>
+    <package name="JsSdkBundle\Tests\src">
+      <file name="/Volumes/LaCie/GitHub/_Bundles/js-sdk-bundle/Tests/src/Controller/TestControllerTest.php">
+        <class name="TestControllerTest" namespace="JsSdkBundle\Tests\src">
+          <metrics complexity="15" methods="12" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="65" coveredstatements="64" elements="77" coveredelements="75"/>
+        </class>
+        <line num="12" type="method" name="testEmpty" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="14" type="stmt" count="1"/>
+        <line num="15" type="stmt" count="1"/>
+        <line num="16" type="stmt" count="1"/>
+        <line num="18" type="method" name="testGoogleAnalytics" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="20" type="stmt" count="1"/>
+        <line num="21" type="stmt" count="1"/>
+        <line num="22" type="stmt" count="1"/>
+        <line num="25" type="stmt" count="1"/>
+        <line num="26" type="stmt" count="1"/>
+        <line num="27" type="stmt" count="1"/>
+        <line num="28" type="stmt" count="1"/>
+        <line num="29" type="stmt" count="1"/>
+        <line num="31" type="stmt" count="1"/>
+        <line num="33" type="method" name="testGoogleAnalyticsDuplicate" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="35" type="stmt" count="1"/>
+        <line num="36" type="stmt" count="1"/>
+        <line num="37" type="stmt" count="1"/>
+        <line num="39" type="stmt" count="1"/>
+        <line num="40" type="stmt" count="1"/>
+        <line num="41" type="stmt" count="1"/>
+        <line num="42" type="stmt" count="1"/>
+        <line num="43" type="stmt" count="1"/>
+        <line num="44" type="stmt" count="1"/>
+        <line num="45" type="stmt" count="1"/>
+        <line num="46" type="stmt" count="1"/>
+        <line num="47" type="stmt" count="1"/>
+        <line num="49" type="stmt" count="1"/>
+        <line num="50" type="stmt" count="1"/>
+        <line num="52" type="method" name="testGoogleAnalyticsSet" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="54" type="stmt" count="1"/>
+        <line num="55" type="stmt" count="1"/>
+        <line num="56" type="stmt" count="1"/>
+        <line num="57" type="stmt" count="1"/>
+        <line num="58" type="stmt" count="1"/>
+        <line num="60" type="stmt" count="1"/>
+        <line num="62" type="method" name="testGoogleAnalyticsEvent" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="64" type="stmt" count="1"/>
+        <line num="65" type="stmt" count="1"/>
+        <line num="66" type="stmt" count="1"/>
+        <line num="67" type="stmt" count="1"/>
+        <line num="68" type="stmt" count="1"/>
+        <line num="70" type="stmt" count="1"/>
+        <line num="72" type="method" name="testGoogleAnalyticsReturnJavascript" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="74" type="stmt" count="1"/>
+        <line num="75" type="stmt" count="1"/>
+        <line num="76" type="stmt" count="1"/>
+        <line num="77" type="stmt" count="1"/>
+        <line num="78" type="stmt" count="1"/>
+        <line num="80" type="stmt" count="1"/>
+        <line num="82" type="method" name="testMissingParameterException" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="84" type="stmt" count="1"/>
+        <line num="85" type="stmt" count="1"/>
+        <line num="86" type="stmt" count="1"/>
+        <line num="87" type="stmt" count="1"/>
+        <line num="88" type="stmt" count="1"/>
+        <line num="89" type="stmt" count="1"/>
+        <line num="91" type="stmt" count="1"/>
+        <line num="93" type="method" name="getParsedConfig" visibility="private" complexity="1" crap="1" count="2"/>
+        <line num="95" type="stmt" count="2"/>
+        <line num="96" type="stmt" count="2"/>
+        <line num="99" type="method" name="assertResponseContains" visibility="private" complexity="3" crap="3.07" count="6"/>
+        <line num="101" type="stmt" count="6"/>
+        <line num="102" type="stmt" count="0"/>
+        <line num="104" type="stmt" count="6"/>
+        <line num="105" type="stmt" count="6"/>
+        <line num="107" type="stmt" count="6"/>
+        <line num="109" type="method" name="getClient" visibility="private" complexity="1" crap="1" count="7"/>
+        <line num="111" type="stmt" count="7"/>
+        <line num="112" type="stmt" count="7"/>
+        <line num="117" type="method" name="assertUri" visibility="private" complexity="2" crap="2" count="7"/>
+        <line num="119" type="stmt" count="7"/>
+        <line num="120" type="stmt" count="7"/>
+        <line num="121" type="stmt" count="6"/>
+        <line num="123" type="stmt" count="7"/>
+        <line num="126" type="method" name="getKernelClass" visibility="protected" complexity="1" crap="1" count="1"/>
+        <line num="128" type="stmt" count="1"/>
+        <metrics loc="129" ncloc="127" classes="1" methods="12" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="65" coveredstatements="64" elements="77" coveredelements="75"/>
+      </file>
+    </package>
+    <metrics files="5" loc="277" ncloc="251" classes="3" methods="24" coveredmethods="22" conditionals="0" coveredconditionals="0" statements="98" coveredstatements="95" elements="122" coveredelements="117"/>
+  </project>
+</coverage>
