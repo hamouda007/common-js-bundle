@@ -2,7 +2,7 @@
 **This bundle is currently under development but there will be a release shortly, firstly with just the Google Analytics SDK**
 
 [![Build Status](https://travis-ci.org/silverbackis/js-sdk-bundle.svg?branch=master)](https://travis-ci.org/silverbackis/js-sdk-bundle)
-
+[![codecov](https://codecov.io/gh/silverbackis/js-sdk-bundle/branch/master/graph/badge.svg)](https://codecov.io/gh/silverbackis/js-sdk-bundle)
 
 This bundle provides twig functions to easily add common Javascript SDK tags to any page.
 
