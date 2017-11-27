@@ -79,6 +79,19 @@ class TestControllerTest extends WebTestCase
         ]);
     }
 
+    public function testGoogleAnalyticsEc()
+    {
+        $env = 'google_analytics';
+        $client = $this->getClient($env);
+        $this->assertUri($client, '/google-analytics/ec');
+        $this->assertResponseContains($client, [
+            "ec/setAction is missing" => "ga('ec:setAction', click, {\"id\":\"no link\"})",
+            "ec/addImpression is missing" => "ga('ec:addImpression', {\"id\":\"SKU1\",\"name\":\"A Book\",\"list\":\"Books\"})",
+            "ec/addProduct is missing" => "ga('ec:addProduct', {\"id\":\"SKU1\",\"name\":\"A Book\"});",
+            "ec/addPromo is missing" => "ga('ec:addPromo', {\"id\":\"PROMO1\",\"name\":\"The Best Promotion Ever\"});"
+        ]);
+    }
+
     public function testMissingParameterException()
     {
         $env = 'empty';
@@ -118,7 +131,8 @@ class TestControllerTest extends WebTestCase
     {
         $crawler = $client->request('GET', $uri);
         if ($assertSuccess) {
-            $this->assertTrue($client->getResponse()->isSuccessful(), "Test URI '$uri' does not return a successful HTTP status code " . $client->getResponse()->getContent());
+            $titleTag = $crawler->filter('title');
+            $this->assertTrue($client->getResponse()->isSuccessful(), $titleTag->count() ? $titleTag->text() : 'No title tag found to extract exception message from');
         }
         return $crawler;
     }

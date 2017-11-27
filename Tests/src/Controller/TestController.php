@@ -53,6 +53,15 @@ class TestController extends AbstractController
     }
 
     /**
+     * @Route("/google-analytics/ec")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function googleAnalyticsEc()
+    {
+        return $this->render('@Test/google/ec.html.twig');
+    }
+
+    /**
      * @Route("/empty")
      * @return \Symfony\Component\HttpFoundation\Response
      */

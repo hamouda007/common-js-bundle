@@ -25,7 +25,9 @@ class SerializerExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('serialize_json', array($this, 'serialize')),
+            new \Twig_SimpleFunction('serialize_json', array($this, 'serialize'), [
+                'is_safe' => ['js']
+            ]),
             new \Twig_SimpleFunction('deserialize_json', array($this, 'deserialize'))
         ];
     }

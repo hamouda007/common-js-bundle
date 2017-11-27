@@ -27,11 +27,11 @@ class Event
         bool $nonInteraction = false
     )
     {
-        $this->category = $category;
-        $this->action = $action;
-        $this->label = $label;
-        $this->transport = $transport;
-        $this-> nonInteraction = $nonInteraction;
+        $this->setCategory($category);
+        $this->setAction($action);
+        $this->setLabel($label);
+        $this->setTransport($transport);
+        $this->setNonInteraction($nonInteraction);
     }
 
     /**
