@@ -2,7 +2,9 @@
 
 namespace JsSdkBundle\Provider\Sdk;
 
+use JsSdkBundle\Model\GoogleAnalytics\EcNameIdInterface;
 use JsSdkBundle\Provider\BaseProvider;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 final class GoogleAnalyticsProvider extends BaseProvider
 {
@@ -41,5 +43,15 @@ final class GoogleAnalyticsProvider extends BaseProvider
     public static function validateEcAction(string $action)
     {
         return in_array($action, self::ecActions());
+    }
+
+    public static function validateNameOrId(EcNameIdInterface $object, ExecutionContextInterface $context, $payload)
+    {
+        if (!$object->getId() && !$object->getName())
+        {
+            $context->buildViolation('Either ID or Name is required')
+                ->atPath('id')
+                ->addViolation();
+        }
     }
 }

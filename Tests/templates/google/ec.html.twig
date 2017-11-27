@@ -2,13 +2,13 @@
   {{ js_sdk_remove_block('google_analytics', 'page_view') }}
   {{ js_sdk_add_block('google_analytics', 'ec/init') }}
   {% set action = js_sdk_model('google_analytics', 'ec_action', ['click', 'no link']) %}
-  {{ js_sdk_add_block('google_analytics', 'ec/setAction', null, false, {action: action}) }}
+  {{ js_sdk_add_block('google_analytics', 'ec/set_action', null, false, {action: action}) }}
   {% set impression = js_sdk_model('google_analytics', 'ec_impression', ['SKU1', 'A Book', "Books"]) %}
-  {{ js_sdk_add_block('google_analytics', 'ec/addImpression', null, false, {impression: impression}) }}
+  {{ js_sdk_add_block('google_analytics', 'ec/add_impression', null, false, {impression: impression}) }}
   {% set product = js_sdk_model('google_analytics', 'ec_product', ['SKU1', 'A Book']) %}
-  {{ js_sdk_add_block('google_analytics', 'ec/addProduct', null, false, {product: product}) }}
+  {{ js_sdk_add_block('google_analytics', 'ec/add_product', null, false, {product: product}) }}
   {% set promo = js_sdk_model('google_analytics', 'ec_promo', ['PROMO1', 'The Best Promotion Ever']) %}
-  {{ js_sdk_add_block('google_analytics', 'ec/addPromo', null, false, {promo: promo}) }}
+  {{ js_sdk_add_block('google_analytics', 'ec/add_promo', null, false, {promo: promo}) }}
   {{ js_sdk_add_block('google_analytics', 'page_view') }}
   {{ js_sdk_output('google_analytics') }}
 {% endspaceless %}

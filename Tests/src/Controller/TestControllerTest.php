@@ -92,6 +92,17 @@ class TestControllerTest extends WebTestCase
         ]);
     }
 
+    public function testGoogleAnalyticsInvalidEc()
+    {
+        $env = 'google_analytics';
+        $client = $this->getClient($env);
+        $this->assertUri($client, '/google-analytics/ec-invalid', false);
+        $this->assertEquals(500, $client->getResponse()->getStatusCode(), "500 error expected for an invalid model");
+        $this->assertResponseContains($client, [
+            "The expected error message is missing" => "Either ID or Name is required"
+        ]);
+    }
+
     public function testMissingParameterException()
     {
         $env = 'empty';

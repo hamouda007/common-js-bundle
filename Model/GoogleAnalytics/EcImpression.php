@@ -3,14 +3,18 @@
 namespace JsSdkBundle\Model\GoogleAnalytics;
 
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
-class EcImpression
+/**
+ * Class EcImpression
+ * @package JsSdkBundle\Model\GoogleAnalytics
+ * @Assert\Callback({"JsSdkBundle\Provider\Sdk\GoogleAnalyticsProvider", "validateNameOrId"})
+ */
+class EcImpression implements EcNameIdInterface
 {
-    /** @var string */
+    /** @var string|null */
     private $id;
 
-    /** @var string */
+    /** @var string|null */
     private $name;
 
     /** @var string|null */
@@ -43,8 +47,8 @@ class EcImpression
      * @param float|null $price
      */
     public function __construct(
-        string $id,
-        string $name,
+        string $id = null,
+        string $name = null,
         string $list = null,
         string $brand = null,
         string $category = null,
@@ -64,23 +68,9 @@ class EcImpression
     }
 
     /**
-     * @param ExecutionContextInterface $context
-     * @Assert\Callback()
+     * @return string|null
      */
-    public function validate(ExecutionContextInterface $context)
-    {
-        if ($this->getId() === '' && $this->getName() === '')
-        {
-            $context->buildViolation('Either ID or Name is required')
-                ->atPath('id')
-                ->addViolation();
-        }
-    }
-
-    /**
-     * @return string
-     */
-    public function getId(): string
+    public function getId()
     {
         return $this->id;
     }
@@ -88,15 +78,15 @@ class EcImpression
     /**
      * @param string $id
      */
-    public function setId(string $id)
+    public function setId(string $id = null)
     {
         $this->id = $id;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
@@ -104,7 +94,7 @@ class EcImpression
     /**
      * @param string $name
      */
-    public function setName(string $name)
+    public function setName(string $name = null)
     {
         $this->name = $name;
     }

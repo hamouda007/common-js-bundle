@@ -62,6 +62,15 @@ class TestController extends AbstractController
     }
 
     /**
+     * @Route("/google-analytics/ec-invalid")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function googleAnalyticsInvalidEc()
+    {
+        return $this->render('@Test/google/ec_invalid.html.twig');
+    }
+
+    /**
      * @Route("/empty")
      * @return \Symfony\Component\HttpFoundation\Response
      */

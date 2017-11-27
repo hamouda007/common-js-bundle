@@ -27,18 +27,12 @@ class SerializerExtension extends \Twig_Extension
         return [
             new \Twig_SimpleFunction('serialize_json', array($this, 'serialize'), [
                 'is_safe' => ['js']
-            ]),
-            new \Twig_SimpleFunction('deserialize_json', array($this, 'deserialize'))
+            ])
         ];
     }
 
     public function serialize($object)
     {
         return $this->serializer->serialize($object, 'json');
-    }
-
-    public function deserialize(string $data, string $class)
-    {
-        return $this->serializer->deserialize($data, $class, 'json');
     }
 }

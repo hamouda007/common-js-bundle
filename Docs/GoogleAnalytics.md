@@ -72,7 +72,7 @@ For the EC models below see the [Google Developer Guide](https://developers.goog
 | event | send an event to track | tracking_function<br>event |
 | set | sets an analytics variable | key<br>value |
 | ec/init | extended e-commerce tracking initialisation | tracking_function<br>currency |
-| ec/addImpression | [Google Developers Reference](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-activities) | impression |
-| ec/addProduct | [Google Developers Reference](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-activities) | product |
-| ec/addPromo | [Google Developers Reference](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-promos) | promo |
-| ec/setAction | [Google Developers Reference](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-activities) | action_name<br>action |
+| ec/add_impression | [Google Developers Reference](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-activities) | impression |
+| ec/add_product | [Google Developers Reference](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-activities) | product |
+| ec/add_promo | [Google Developers Reference](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-promos) | promo |
+| ec/set_action | [Google Developers Reference](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-activities) | action_name<br>action |

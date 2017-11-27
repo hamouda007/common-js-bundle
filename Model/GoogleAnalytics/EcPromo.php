@@ -3,9 +3,13 @@
 namespace JsSdkBundle\Model\GoogleAnalytics;
 
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
-class EcPromo
+/**
+ * Class EcPromo
+ * @package JsSdkBundle\Model\GoogleAnalytics
+ * @Assert\Callback({"JsSdkBundle\Provider\Sdk\GoogleAnalyticsProvider", "validateNameOrId"})
+ */
+class EcPromo implements EcNameIdInterface
 {
     /** @var string */
     private $id;
@@ -20,10 +24,10 @@ class EcPromo
     private $position;
 
     public function __construct(
-        $id = '',
-        $name = '',
-        $creative = null,
-        $position = null
+        string $id = null,
+        string $name = null,
+        string $creative = null,
+        string $position = null
     )
     {
         $this->setId($id);
@@ -33,23 +37,9 @@ class EcPromo
     }
 
     /**
-     * @param ExecutionContextInterface $context
-     * @Assert\Callback()
+     * @return string|null
      */
-    public function validate(ExecutionContextInterface $context)
-    {
-        if ($this->getId() === '' && $this->getName() === '')
-        {
-            $context->buildViolation('Either ID or Name is required')
-                ->atPath('id')
-                ->addViolation();
-        }
-    }
-
-    /**
-     * @return string
-     */
-    public function getId(): string
+    public function getId()
     {
         return $this->id;
     }
@@ -57,15 +47,15 @@ class EcPromo
     /**
      * @param string $id
      */
-    public function setId(string $id)
+    public function setId(string $id = null)
     {
         $this->id = $id;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
@@ -73,7 +63,7 @@ class EcPromo
     /**
      * @param string $name
      */
-    public function setName(string $name)
+    public function setName(string $name = null)
     {
         $this->name = $name;
     }
