@@ -13,7 +13,43 @@ class TestController extends AbstractController
      */
     public function googleAnalytics()
     {
-        return $this->render('@Test/test_google.html.twig');
+        return $this->render('@Test/google/basic.html.twig');
+    }
+
+    /**
+     * @Route("/google-analytics/duplicate")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function googleAnalyticsDuplicate()
+    {
+        return $this->render('@Test/google/duplicate.html.twig');
+    }
+
+    /**
+     * @Route("/google-analytics/set")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function googleAnalyticsSet()
+    {
+        return $this->render('@Test/google/set.html.twig');
+    }
+
+    /**
+     * @Route("/google-analytics/event")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function googleAnalyticsEvent()
+    {
+        return $this->render('@Test/google/event.html.twig');
+    }
+
+    /**
+     * @Route("/google-analytics/return-js")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function googleAnalyticsReturnJsFromBlock()
+    {
+        return $this->render('@Test/google/at_block_false.html.twig');
     }
 
     /**

@@ -1,6 +1,6 @@
 js_sdk:
     google_analytics:
-        enabled: true
         id: UA-12345678
         debug: true
-        default_blocks: ~
+        default_blocks:
+            page_view: ~

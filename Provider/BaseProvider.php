@@ -54,15 +54,20 @@ abstract class BaseProvider implements ProviderInterface
         return self::$converter;
     }
 
+    public function getPascalCaseBlock(): string
+    {
+        $fullClass = get_class($this);
+        $classParts = explode('\\', $fullClass);
+        $class = array_pop($classParts);
+        return rtrim($class, 'Provider');
+    }
+
     /**
      * @return string
      */
     public function getBlockName(): string
     {
-        $fullClass = get_class($this);
-        $classParts = explode('\\', $fullClass);
-        $class = array_pop($classParts);
-        return self::getConverter()->normalize(rtrim($class, 'Provider'));
+        return self::getConverter()->normalize($this->getPascalCaseBlock());
     }
 
     /**
@@ -93,8 +98,12 @@ abstract class BaseProvider implements ProviderInterface
      * @param bool $prepend
      * @param array $args
      */
-    public function addScriptBlock(string $blockPath, string $atBlockPath = null, bool $prepend = false, array $args = []): void
+    public function addScriptBlock(string $blockPath, string $atBlockPath = null, bool $prepend = false, array $args = []): ?string
     {
+        $twigParams = $this->getBlockTwigParams($blockPath, $args);
+        if ($atBlockPath === "false") {
+            return $this->twigParamsRenderer->render($twigParams);
+        }
         $offset = $prepend ? 0 : count($this->scripts);
         if ($atBlockPath) {
             $blockOffset = array_search($atBlockPath, array_keys($this->scripts));
@@ -108,9 +117,11 @@ abstract class BaseProvider implements ProviderInterface
 
         $this->scripts = array_merge(
             array_slice($this->scripts, 0, $offset),
-            [$blockPath => $this->getBlockTwigParams($blockPath, $args)],
+            [$blockPath => $twigParams],
             array_slice($this->scripts, $offset)
         );
+
+        return null;
     }
 
     public function removeScriptBlock(string $blockPath): void
@@ -163,6 +174,12 @@ abstract class BaseProvider implements ProviderInterface
                 $twigArgs
             ));
         }
+    }
+
+    public function getNewModel(string $model, array $args = [])
+    {
+        $fullClass = 'JsSdkBundle\\Model\\' . $this->getPascalCaseBlock() . '\\' . self::getConverter()->denormalize($model);
+        return new $fullClass(...$args);
     }
 
     public function __clone()

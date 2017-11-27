@@ -1,4 +1,2 @@
 framework:
     test:     ~
-    templating:
-        engines: ['twig']

@@ -25,6 +25,11 @@ interface ProviderInterface
     /**
      * @return string
      */
+    public function getPascalCaseBlock(): string;
+
+    /**
+     * @return string
+     */
     function getBlockName(): string;
 
     /**
@@ -45,7 +50,7 @@ interface ProviderInterface
      * @param bool $prepend
      * @param array $args
      */
-    function addScriptBlock(string $blockPath, string $atBlockPath = null, bool $prepend = false, array $args = []): void;
+    function addScriptBlock(string $blockPath, string $atBlockPath = null, bool $prepend = false, array $args = []):  ?string;
 
     /**
      * @param string $blockPath
@@ -62,4 +67,11 @@ interface ProviderInterface
      * @param array $twigArgs
      */
     function setScriptBlockTwigArgs(array $twigArgs = []): void;
+
+    /**
+     * @param string $model
+     * @param array $args
+     * @return mixed
+     */
+    public function getNewModel(string $model, array $args = []);
 }

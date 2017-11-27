@@ -3,12 +3,13 @@ This bundle provides twig functions to easily add common Javascript SDK tags to 
 
 It has been structured to be easily expanded for whatever SDKs you may want. Out of the box this bundle will support Google Analytics, Woopra, Facebook, Facebook Pixel and Twitter.
 
-This bundle is only configured and tested to be used for Symfony >=3.4 using the new Flex file structure.
+This bundle is only configured and tested to be used for Symfony >=3.4 using Symfony Flex (or at at a minimum the new Flex file structure)
 
 ## Installation
 This bundle will be submitted to the Symfony Flex contrib repository shortly. Until then you'll have to add the bundle into your bundles.php file manually.
+*This bundle is currently under development but there will be a release shortly*
 ```bash
-composer req silverbackis/js-sdk-bundle
+composer req silverbackis/js-sdk-bundle@dev
 ```
 
 ```php
@@ -19,11 +20,13 @@ return [
 ```
 
 ## Getting Started
+### Twig
 Javascript blocks can be configured directly from your twig templates using the following functions
 ```twig
 {{ js_sdk_add_block(sdk_name, sdk_block_name, at_sdk_block_name, before_at_sdk_block_name, override_params) }}
 {{ js_sdk_output(sdk_name, override_params) }}
 ```
+`at_sdk_block_name` can be `"false"` (note this is a string) which will result in the function returning the javascript for you to insert. You may which to track a click event for example when a user clicks a link instead of in the main tracking code.
 
 You can duplicate an SDK block in its current state at any point in the Twig template
 ```twig
@@ -34,6 +37,29 @@ You can also remove a block (if you've duplicated a block but want to remove a s
 ```twig
 {{ js_sdk_remove_block(sdk_name, sdk_block_name) }}
 ```
+
+To get/create a new model (models are explained a little later) you can use:
+```twig
+{{ js_sdk_model(sdk_name, model, arguments) }}
+```
+
+### Configuration
+Each parameter for an SDK can be configured in your *js_sdk.yaml* file. This is an example for Google Analytics. Not all parameters are required. There is an optional `enabled` parameter not shown below.
+```yaml
+# config/packages/js_sdk.yaml
+js_sdk:
+    google_analytics:
+        id: UA-12452352
+```
+
+If an SDK has been enabled in one configuration, you can disable in another environment's config file by setting the SDK name to false:
+```yaml
+js_sdk:
+    google_analytics: false
+```
+
+### Models
+There are models available for some SDK blocks (e.g. Google Analytics Event). You can use these to easily construct and pass data to a block. All models allow you to define all the variables in the constructor (in the order they are documented here) and also have getters and setters.
 
 ## Google Analytics Example
 The first SDK implemented is for Google Analytics. Here is an example of how you may end up using the functions.
@@ -59,16 +85,6 @@ This library is designed to be as flexible as possible. At any point you are abl
 {{ js_sdk_output('analytics_two') }}
 ```
 
-Each parameter for an SDK can be configured in your *js_sdk.yaml* file. This is an example for Google Analytics. Not all parameters are required. You will need to set `enabled` to `true` for any SDK you want to use.
-```yaml
-# config/packages/js_sdk.yaml
-js_sdk:
-    google_analytics:
-        enabled: true
-        id: UA-12452352
-        currency: USD
-```
-
 ## SDK Names, Blocks and Configuration Parameters
 Some parameters are common across all SDKs. You cannot pass the `default_blocks` variable in via the twig template, but you can still remove and modify the default blocks from the template using `js_sdk_add_block()` and `js_sdk_remove_block()` functions
 
@@ -80,7 +96,6 @@ Some parameters are common across all SDKs. You cannot pass the `default_blocks`
 ```yaml
 js_sdk:
     sdk_name:
-        enabled: true
         default_blocks:
             block_name: ~
             "another/block_name":
@@ -91,14 +106,28 @@ js_sdk:
 ### Google Analytics
 SDK name: **google_analytics**
 
+#### Models
+##### JsSdkBundle\Model\GoogleAnalytics\Event
+- category
+- action
+- label
+- transport
+- nonInteraction
+
+#### Reference
 | Parameter | Default | Details |
-| --- | --- | --- |
+| :--- | :--- | :--- |
 | id | n/a (required) | Used in js_sdk_output function to initialise tracking code. E.g. 'UA-12345678' |
 | debug | false | Can enable debug mode on the analytics tracking code |
 | tracking_function | "ga" | The function variable to be used for tracking |
 | currency | "GBP" | Used in extended e-commerce tracking to define the default currency you are recording monetary values with |
+| event | n/a | This should be an instance of the Event model **(required for event block)** |
+| key | n/a | String - key of variable to set **(required for set block)** |
+| value | n/a | String - value of the variable to set **(required for set block)** |
 
-| Block | Description | Variables Used |
-| --- | --- | --- |
+| Block | Description | Variables Used
+| :--- | :--- | :--- |
 | page_view | page view tracking code | tracking_function |
+| event | send an event to track | tracking_function<br>event |
 | ec/init | extended e-commerce tracking initialisation | tracking_function<br>currency |
+| set | sets an analytics variable | key<br>value |

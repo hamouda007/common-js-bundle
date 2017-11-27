@@ -1,11 +1,6 @@
-{{ js_sdk_add_block('google_analytics', 'page_view') }}
-{{ js_sdk_add_block('google_analytics', 'ec/init', 'page_view', true) }}
-{{ js_sdk_output('google_analytics') }}
-
+{% include '@Test/google/basic.html.twig' %}
 {{ js_sdk_duplicate('google_analytics', 'analytics_new', {tracking_function: 'ga_extra', id: 'UA-98765432'}) }}
 {{ js_sdk_duplicate('google_analytics', 'analytics_new_new', {tracking_function: 'ga_extra_extra', id: 'UA-5555555'}) }}
-
 {{ js_sdk_output('analytics_new') }}
-
 {{ js_sdk_remove_block('analytics_new_new', 'ec/init') }}
 {{ js_sdk_output('analytics_new_new') }}

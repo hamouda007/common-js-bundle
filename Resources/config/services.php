@@ -20,8 +20,7 @@ return function(ContainerConfigurator $configurator) {
     $services
         ->set(ServiceProvider::class)
         ->set(TwigParamsRenderer::class)
-        ->set(JsSdkExtension::class)
-            ->tag('twig.extension')
+        ->load('JsSdkBundle\\Twig\\Extension\\', '../../Twig/Extension/*')
         ->load('JsSdkBundle\\Provider\\', '../../Provider/*')
     ;
 };

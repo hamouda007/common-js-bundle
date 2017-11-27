@@ -27,12 +27,15 @@ class JsSdkExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('js_sdk_add_block', array($this, 'addBlock')),
+            new \Twig_SimpleFunction('js_sdk_add_block', array($this, 'addBlock'), [
+                'is_safe' => ['html']
+            ]),
             new \Twig_SimpleFunction('js_sdk_output', array($this, 'output'), [
                 'is_safe' => ['html']
             ]),
             new \Twig_SimpleFunction('js_sdk_duplicate', array($this, 'duplicate')),
-            new \Twig_SimpleFunction('js_sdk_remove_block', array($this, 'removeBlock'))
+            new \Twig_SimpleFunction('js_sdk_remove_block', array($this, 'removeBlock')),
+            new \Twig_SimpleFunction('js_sdk_model', array($this, 'newModel'))
         ];
     }
 
@@ -46,10 +49,18 @@ class JsSdkExtension extends \Twig_Extension
         return $this->providerServiceProvider->getProvider($providerClassName);
     }
 
-    public function addBlock(string $sdk, string $block, string $atBlockPath = null, bool $prepend = false, array $args = []): void
+    /**
+     * @param string $sdk
+     * @param string $block
+     * @param string|null $atBlockPath
+     * @param bool $prepend
+     * @param array $args
+     * @return null|string
+     */
+    public function addBlock(string $sdk, string $block, string $atBlockPath = null, bool $prepend = false, array $args = []): ?string
     {
         $provider = $this->getProvider($sdk);
-        $provider->addScriptBlock($block, $atBlockPath, $prepend, $args);
+        return $provider->addScriptBlock($block, $atBlockPath, $prepend, $args);
     }
 
     /**
@@ -62,12 +73,22 @@ class JsSdkExtension extends \Twig_Extension
         $provider->removeScriptBlock($block);
     }
 
+    /**
+     * @param string $sdk
+     * @param array $twigArgs
+     * @return string
+     */
     public function output(string $sdk, array $twigArgs = [])
     {
         $provider = $this->getProvider($sdk);
         return $provider->renderSdk($twigArgs);
     }
 
+    /**
+     * @param string $sdk
+     * @param string $newSdkName
+     * @param array $twigArgs
+     */
     public function duplicate(string $sdk, string $newSdkName, array $twigArgs = [])
     {
         $provider = $this->getProvider($sdk);
@@ -81,5 +102,17 @@ class JsSdkExtension extends \Twig_Extension
 
         $providerClassName = BaseProvider::getConverter()->denormalizeToProviderClassName($newSdkName);
         $this->providerServiceProvider->addProvider($newProvider, $providerClassName);
+    }
+
+    /**
+     * @param string $sdk
+     * @param string $model
+     * @param array $args
+     * @return mixed
+     */
+    public function newModel(string $sdk, string $model, array $args = [])
+    {
+        $provider = $this->getProvider($sdk);
+        return $provider->getNewModel($model, $args);
     }
 }
