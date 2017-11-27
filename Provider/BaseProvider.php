@@ -7,6 +7,7 @@ use JsSdkBundle\NameConverter\PascalCaseToSnakeCaseConverter;
 use JsSdkBundle\NameConverter\ProviderClassNameConverterInterface;
 use JsSdkBundle\Renderer\TwigParamsRenderer;
 use Symfony\Component\Validator\Exception\InvalidOptionsException;
+use Symfony\Component\Validator\Exception\ValidatorException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 abstract class BaseProvider implements ProviderInterface
@@ -111,6 +112,18 @@ abstract class BaseProvider implements ProviderInterface
      */
     public function addScriptBlock(string $blockPath, string $atBlockPath = null, bool $prepend = false, array $args = [])
     {
+        foreach($args as $param)
+        {
+            if(is_object($param) && strpos(get_class($param), self::MODEL_NAMESPACE . $this->getPascalCaseBlock() . '\\') === 0)
+            {
+                $errors = $this->validator->validate($param);
+                if (count($errors) > 0) {
+                    $errorsString = (string) $errors;
+                    throw new ValidatorException($errorsString);
+                }
+            }
+        }
+
         $twigParams = $this->getBlockTwigParams($blockPath, $args);
         if ($atBlockPath === "false") {
             return $this->twigParamsRenderer->render($twigParams);
@@ -123,19 +136,6 @@ abstract class BaseProvider implements ProviderInterface
                     $blockOffset--;
                 }
                 $offset = $blockOffset;
-            }
-        }
-
-        foreach($twigParams as $param)
-        {
-            if(is_object($param) && strpos(get_class($param), self::MODEL_NAMESPACE . $this->getPascalCaseBlock() . '\\') === 0)
-            {
-                // Validate the object
-                $errors = $this->validator->validate($param);
-                if (count($errors) > 0) {
-                    $errorsString = (string) $errors;
-                    throw new InvalidOptionsException($errorsString);
-                }
             }
         }
 
