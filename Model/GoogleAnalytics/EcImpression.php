@@ -2,6 +2,9 @@
 
 namespace JsSdkBundle\Model\GoogleAnalytics;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+
 class EcImpression
 {
     /** @var string */
@@ -58,6 +61,20 @@ class EcImpression
         $this->setVariant($variant);
         $this->setPosition($position);
         $this->setPrice($price);
+    }
+
+    /**
+     * @param ExecutionContextInterface $context
+     * @Assert\Callback()
+     */
+    public function validate(ExecutionContextInterface $context)
+    {
+        if ($this->getId() === '' && $this->getName() === '')
+        {
+            $context->buildViolation('Either ID or Name is required')
+                ->atPath('id')
+                ->addViolation();
+        }
     }
 
     /**

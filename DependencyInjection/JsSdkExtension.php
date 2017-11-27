@@ -7,10 +7,11 @@ use JsSdkBundle\ServiceProvider\ServiceProvider;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 
-class JsSdkExtension extends Extension
+class JsSdkExtension extends Extension implements PrependExtensionInterface
 {
     public function load(array $configs, ContainerBuilder $container)
     {
@@ -51,5 +52,14 @@ class JsSdkExtension extends Extension
                 $provider->addMethodCall('addProvider', [ new Reference($providerClass) ]);
             }
         }
+    }
+
+    public function prepend(ContainerBuilder $container)
+    {
+        $container->prependExtensionConfig('framework', [
+            'validation' => [
+                'enable_annotations' => true
+            ]
+        ]);
     }
 }

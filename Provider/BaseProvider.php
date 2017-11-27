@@ -6,13 +6,22 @@ use JsSdkBundle\Model\TwigParams;
 use JsSdkBundle\NameConverter\PascalCaseToSnakeCaseConverter;
 use JsSdkBundle\NameConverter\ProviderClassNameConverterInterface;
 use JsSdkBundle\Renderer\TwigParamsRenderer;
+use Symfony\Component\Validator\Exception\InvalidOptionsException;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 abstract class BaseProvider implements ProviderInterface
 {
+    const MODEL_NAMESPACE = 'JsSdkBundle\\Model\\';
+
     /**
      * @var TwigParamsRenderer
      */
     private $twigParamsRenderer;
+
+    /**
+     * @var ValidatorInterface
+     */
+    private $validator;
 
     /**
      * @var PascalCaseToSnakeCaseConverter
@@ -30,10 +39,12 @@ abstract class BaseProvider implements ProviderInterface
     protected $twigArgs;
 
     public function __construct(
-        TwigParamsRenderer $twigParamsRenderer
+        TwigParamsRenderer $twigParamsRenderer,
+        ValidatorInterface $validator
     )
     {
         $this->twigParamsRenderer = $twigParamsRenderer;
+        $this->validator = $validator;
     }
 
     public function setTwigArgs(array $twigArgs = null)
@@ -112,6 +123,19 @@ abstract class BaseProvider implements ProviderInterface
                     $blockOffset--;
                 }
                 $offset = $blockOffset;
+            }
+        }
+
+        foreach($twigParams as $param)
+        {
+            if(is_object($param) && strpos(get_class($param), self::MODEL_NAMESPACE . $this->getPascalCaseBlock() . '\\') === 0)
+            {
+                // Validate the object
+                $errors = $this->validator->validate($param);
+                if (count($errors) > 0) {
+                    $errorsString = (string) $errors;
+                    throw new InvalidOptionsException($errorsString);
+                }
             }
         }
 

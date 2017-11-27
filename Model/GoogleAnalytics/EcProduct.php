@@ -2,6 +2,9 @@
 
 namespace JsSdkBundle\Model\GoogleAnalytics;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+
 class EcProduct
 {
     /** @var string */
@@ -63,6 +66,20 @@ class EcProduct
         $this->setQuantity($quantity);
         $this->setCoupon($coupon);
         $this->setPosition($position);
+    }
+
+    /**
+     * @param ExecutionContextInterface $context
+     * @Assert\Callback()
+     */
+    public function validate(ExecutionContextInterface $context)
+    {
+        if ($this->getId() === '' && $this->getName() === '')
+        {
+            $context->buildViolation('Either ID or Name is required')
+                ->atPath('id')
+                ->addViolation();
+        }
     }
 
     /**

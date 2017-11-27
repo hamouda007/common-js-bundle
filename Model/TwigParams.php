@@ -23,9 +23,9 @@ class TwigParams
         string $sdk = ''
     )
     {
-        $this->path = $path;
-        $this->arguments = $arguments;
-        $this->sdk = $sdk;
+        $this->setPath($path);
+        $this->setArguments($arguments);
+        $this->setSdk($sdk);
     }
 
     /**

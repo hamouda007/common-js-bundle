@@ -85,7 +85,7 @@ class TestControllerTest extends WebTestCase
         $client = $this->getClient($env);
         $this->assertUri($client, '/google-analytics/ec');
         $this->assertResponseContains($client, [
-            "ec/setAction is missing" => "ga('ec:setAction', click, {\"id\":\"no link\"})",
+            "ec/setAction is missing" => "ga('ec:setAction', \"click\", {\"id\":\"no link\",\"name\":\"click\"})",
             "ec/addImpression is missing" => "ga('ec:addImpression', {\"id\":\"SKU1\",\"name\":\"A Book\",\"list\":\"Books\"})",
             "ec/addProduct is missing" => "ga('ec:addProduct', {\"id\":\"SKU1\",\"name\":\"A Book\"});",
             "ec/addPromo is missing" => "ga('ec:addPromo', {\"id\":\"PROMO1\",\"name\":\"The Best Promotion Ever\"});"

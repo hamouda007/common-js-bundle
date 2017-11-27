@@ -2,10 +2,22 @@
 
 namespace JsSdkBundle\Model\GoogleAnalytics;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 class EcAction
 {
-    /** @var string */
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     */
     private $id;
+
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     * @Assert\Callback({"JsSdkBundle\Provider\Sdk\GoogleAnalyticsProvider", "validateEcAction"})
+     */
+    private $name;
 
     /** @var string|null */
     private $affiliation;
@@ -33,6 +45,7 @@ class EcAction
 
     /**
      * EcAction constructor.
+     * @param string $name
      * @param string $id
      * @param null|string $affiliation
      * @param float|null $revenue
@@ -44,6 +57,7 @@ class EcAction
      * @param null|string $option
      */
     public function __construct(
+        string $name,
         string $id,
         string $affiliation = null,
         float $revenue = null,
@@ -54,15 +68,16 @@ class EcAction
         int $step = null,
         string $option = null)
     {
-       $this->setId($id);
-       $this->setAffiliation($affiliation);
-       $this->setRevenue($revenue);
-       $this->setTax($tax);
-       $this->setShipping($shipping);
-       $this->setCoupon($coupon);
-       $this->setList($list);
-       $this->setStep($step);
-       $this->setOption($option);
+        $this->setName($name);
+        $this->setId($id);
+        $this->setAffiliation($affiliation);
+        $this->setRevenue($revenue);
+        $this->setTax($tax);
+        $this->setShipping($shipping);
+        $this->setCoupon($coupon);
+        $this->setList($list);
+        $this->setStep($step);
+        $this->setOption($option);
     }
 
     /**
@@ -79,6 +94,22 @@ class EcAction
     public function setId(string $id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name)
+    {
+        $this->name = $name;
     }
 
     /**

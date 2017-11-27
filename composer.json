@@ -8,7 +8,9 @@
         "symfony/framework-bundle": "^3.4 || ^4",
         "symfony/twig-bundle": "^3.4 || ^4",
         "symfony/serializer": "^3.4 || ^4",
-        "symfony/property-access": "^3.4 || ^4"
+        "symfony/property-access": "^3.4 || ^4",
+        "symfony/validator": "^3.4 || ^4",
+        "symfony/console": "^3.4 || ^4"
     },
     "require-dev": {
         "symfony/yaml": "^3.4 || ^4",

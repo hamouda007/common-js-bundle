@@ -1,8 +1,8 @@
 {% spaceless %}
   {{ js_sdk_remove_block('google_analytics', 'page_view') }}
   {{ js_sdk_add_block('google_analytics', 'ec/init') }}
-  {% set action = js_sdk_model('google_analytics', 'ec_action', ['no link']) %}
-  {{ js_sdk_add_block('google_analytics', 'ec/setAction', null, false, {action_name: 'click', action: action}) }}
+  {% set action = js_sdk_model('google_analytics', 'ec_action', ['click', 'no link']) %}
+  {{ js_sdk_add_block('google_analytics', 'ec/setAction', null, false, {action: action}) }}
   {% set impression = js_sdk_model('google_analytics', 'ec_impression', ['SKU1', 'A Book', "Books"]) %}
   {{ js_sdk_add_block('google_analytics', 'ec/addImpression', null, false, {impression: impression}) }}
   {% set product = js_sdk_model('google_analytics', 'ec_product', ['SKU1', 'A Book']) %}

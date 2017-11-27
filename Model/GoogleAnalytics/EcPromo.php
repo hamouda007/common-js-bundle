@@ -2,6 +2,9 @@
 
 namespace JsSdkBundle\Model\GoogleAnalytics;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+
 class EcPromo
 {
     /** @var string */
@@ -27,6 +30,20 @@ class EcPromo
         $this->setName($name);
         $this->setCreative($creative);
         $this->setPosition($position);
+    }
+
+    /**
+     * @param ExecutionContextInterface $context
+     * @Assert\Callback()
+     */
+    public function validate(ExecutionContextInterface $context)
+    {
+        if ($this->getId() === '' && $this->getName() === '')
+        {
+            $context->buildViolation('Either ID or Name is required')
+                ->atPath('id')
+                ->addViolation();
+        }
     }
 
     /**
