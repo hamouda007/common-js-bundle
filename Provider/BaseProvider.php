@@ -36,7 +36,7 @@ abstract class BaseProvider implements ProviderInterface
         $this->twigParamsRenderer = $twigParamsRenderer;
     }
 
-    public function setTwigArgs(array $twigArgs = null): void
+    public function setTwigArgs(array $twigArgs = null)
     {
         $this->twigArgs = $twigArgs;
     }
@@ -124,7 +124,7 @@ abstract class BaseProvider implements ProviderInterface
         return null;
     }
 
-    public function removeScriptBlock(string $blockPath): void
+    public function removeScriptBlock(string $blockPath)
     {
         if (isset($this->scripts[$blockPath])) {
             unset($this->scripts[$blockPath]);
@@ -163,7 +163,7 @@ abstract class BaseProvider implements ProviderInterface
         return $this->twigParamsRenderer->render($outputTwigParams);
     }
 
-    public function setScriptBlockTwigArgs(array $twigArgs = []): void
+    public function setScriptBlockTwigArgs(array $twigArgs = [])
     {
         /**
          * @var TwigParams $twigParams

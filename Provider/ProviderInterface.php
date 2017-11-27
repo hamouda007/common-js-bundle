@@ -10,7 +10,7 @@ interface ProviderInterface
     /**
      * @param array|null $twigAgs
      */
-    function setTwigArgs(array $twigAgs = null): void;
+    function setTwigArgs(array $twigAgs = null);
 
     /**
      * @return array|null
@@ -55,7 +55,7 @@ interface ProviderInterface
     /**
      * @param string $blockPath
      */
-    function removeScriptBlock(string $blockPath): void;
+    function removeScriptBlock(string $blockPath);
 
     /**
      * @param array $twigArgs
@@ -66,7 +66,7 @@ interface ProviderInterface
     /**
      * @param array $twigArgs
      */
-    function setScriptBlockTwigArgs(array $twigArgs = []): void;
+    function setScriptBlockTwigArgs(array $twigArgs = []);
 
     /**
      * @param string $model

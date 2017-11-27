@@ -67,7 +67,7 @@ class JsSdkExtension extends \Twig_Extension
      * @param string $sdk
      * @param string $block
      */
-    public function removeBlock(string $sdk, string $block): void
+    public function removeBlock(string $sdk, string $block)
     {
         $provider = $this->getProvider($sdk);
         $provider->removeScriptBlock($block);

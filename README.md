@@ -1,6 +1,9 @@
 # BW Javascript SDK Bundle
 **This bundle is currently under development but there will be a release shortly, firstly with just the Google Analytics SDK**
 
+[![Build Status](https://travis-ci.org/silverbackis/js-sdk-bundle.svg?branch=master)](https://travis-ci.org/silverbackis/js-sdk-bundle)
+
+
 This bundle provides twig functions to easily add common Javascript SDK tags to any page.
 
 It has been structured to be easily expanded for whatever SDKs you may want. Out of the box this bundle will support Google Analytics, Woopra, Facebook, Facebook Pixel and Twitter.
