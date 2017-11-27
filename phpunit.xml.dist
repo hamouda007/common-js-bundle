@@ -18,7 +18,15 @@
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory>./Tests/</directory>
+            <directory>./DependencyInjection/</directory>
+            <directory>./Model/</directory>
+            <directory>./NameConverter/</directory>
+            <directory>./Provider/</directory>
+            <directory>./Renderer/</directory>
+            <directory>./Resources/</directory>
+            <directory>./Serializer/</directory>
+            <directory>./ServiceProvider/</directory>
+            <directory>./Twig/</directory>
         </whitelist>
     </filter>
 </phpunit>

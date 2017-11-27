@@ -1,4 +1,4 @@
-# BW Javascript SDK Bundle
+# Javascript SDK Bundle
 **Only Google Analytics Implemented So Far**
 
 [![Build Status](https://travis-ci.org/silverbackis/js-sdk-bundle.svg?branch=master)](https://travis-ci.org/silverbackis/js-sdk-bundle)
@@ -12,7 +12,7 @@ This bundle provides twig functions to easily add common Javascript SDK tags to 
 
 It has been structured to be easily expanded for whatever SDKs you may want. Out of the box this bundle will support Google Analytics, Woopra, Facebook, Facebook Pixel and Twitter.
 
-This bundle is only configured and tested to be used for Symfony >=3.4 using Symfony Flex (or at at a minimum the new Flex file structure)
+This bundle is only configured and tested to be used for Symfony >=3.4
 
 ## Installation
 This bundle will be submitted to the Symfony Flex contrib repository shortly. Until then you'll have to add the bundle into your bundles.php file manually.
