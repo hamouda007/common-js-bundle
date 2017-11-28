@@ -67,7 +67,7 @@ SDK name: **google_analytics**
 | promo | n/a | An instance of the EcPromo model **(required for "ec/add_promo" block)** |
 | action | n/a | An instance of the EcAction model **(required for "ec/set_action" block)** |
 
-> Every block in this SDK can take the parameter `tracking_function` but it's recommended to duplicate your default google_analytics block with a new `tracking_function` parameter and simply use the new block instead rather than overriding it on each individual block.
+> Every block in this SDK can take the parameter `tracking_function` but it's recommended to duplicate your default google_analytics block with a new `tracking_function` parameter and simply use the new SDK name instead rather than overriding it on each individual block. Alternatively to just use a different `tracking_function` parameter for the default SDK, you can change this in your config files.
 
 | Block | Description | Parameter Used
 | :--- | :--- | :--- |
