@@ -56,8 +56,8 @@ SDK name: **google_analytics**
 | Parameter | Default | Details |
 | :--- | :--- | :--- |
 | id | n/a (required) | Used in js_sdk_output function to initialise tracking code. E.g. 'UA-12345678' |
-| debug | false | Can enable debug mode on the analytics tracking code |
 | tracking_function | "ga" | The function variable to be used for tracking |
+| debug | false | Can enable debug mode on the analytics tracking code |
 | currency | "GBP" | Used in extended e-commerce tracking to define the default currency you are recording monetary values with |
 | event | n/a | An instance of the Event model **(required for "event" block)** |
 | key | n/a | String - key of variable to set **(required for "set" block)** |
@@ -67,12 +67,14 @@ SDK name: **google_analytics**
 | promo | n/a | An instance of the EcPromo model **(required for "ec/add_promo" block)** |
 | action | n/a | An instance of the EcAction model **(required for "ec/set_action" block)** |
 
-| Block | Description | Variables Used
+> Every block in this SDK can take the parameter `tracking_function` but it's recommended to duplicate your default google_analytics block with a new `tracking_function` parameter and simply use the new block instead rather than overriding it on each individual block.
+
+| Block | Description | Parameter Used
 | :--- | :--- | :--- |
-| page_view | page view tracking code | tracking_function |
-| event | send an event to track | tracking_function<br>event |
+| page_view | page view tracking code | - |
+| event | send an event to track | event |
 | set | sets an analytics variable | key<br>value |
-| ec/init | extended e-commerce tracking initialisation | tracking_function<br>currency |
+| ec/init | extended e-commerce tracking initialisation | currency |
 | ec/add_impression | [Google Developers Reference](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-activities) | impression |
 | ec/add_product | [Google Developers Reference](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-activities) | product |
 | ec/add_promo | [Google Developers Reference](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-promos) | promo |
