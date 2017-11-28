@@ -25,7 +25,7 @@ SDK name: **google_analytics**
 - step
 - option
 
-##### JsSdkBundle\Model\GoogleAnalytics\EcImpression
+### JsSdkBundle\Model\GoogleAnalytics\EcImpression
 - id
 - name
 - list
@@ -35,7 +35,7 @@ SDK name: **google_analytics**
 - position
 - price
 
-##### JsSdkBundle\Model\GoogleAnalytics\EcProduct
+### JsSdkBundle\Model\GoogleAnalytics\EcProduct
 - id
 - name
 - brand
@@ -46,13 +46,13 @@ SDK name: **google_analytics**
 - coupon
 - position
 
-##### JsSdkBundle\Model\GoogleAnalytics\EcPromo
+### JsSdkBundle\Model\GoogleAnalytics\EcPromo
 - id
 - name
 - creative
 - position
 
-#### Reference
+## Reference
 | Parameter | Default | Details |
 | :--- | :--- | :--- |
 | id | n/a (required) | Used in js_sdk_output function to initialise tracking code. E.g. 'UA-12345678' |
