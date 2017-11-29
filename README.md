@@ -105,9 +105,6 @@ common_js:
 #### [Twitter](Docs/Twitter.md)
 #### [Facebook SDK](Docs/FacebookSdk.md)
 
-### Other Javascripts
-I have not implemented the other planned Javascript SDKs at the moment. Feel free to submit a PR if you're able to help or have another SDK suggestion (or indeed you have any more features or improvements you'd like to see in what is already implemented)
-
 ### Contributing a new Javascript
 Adding an SDK is pretty straight forwards.
 - A new Provider is required in `CommonJsBundle\Provider\Sdk` extending `CommonJsBundle\Provider\BaseProvider`.
