@@ -18,6 +18,10 @@ trait ControllerTestTrait
         }
     }
 
+    /**
+     * @param string|null $env
+     * @return Client
+     */
     private function getClient(string $env = null)
     {
         return static::createClient([

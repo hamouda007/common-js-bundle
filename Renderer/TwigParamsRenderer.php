@@ -21,7 +21,7 @@ class TwigParamsRenderer
         try {
             return self::$twig->render($twigParams->getPath(), $twigParams->getArguments());
         } catch(\Twig_Error_Runtime $e) {
-            throw new \Twig_Error_Runtime('One of the common_js blocks you are trying to include has not been fully configured and is missing an option. For `'.$twigParams->getSdk().'`: ' . $e->getMessage());
+            throw new \Twig_Error_Runtime('One of the common_js blocks you are trying to include has not been fully configured and is missing a parameter for `'.$twigParams->getName().'`: ' . $e->getMessage());
         }
     }
 }

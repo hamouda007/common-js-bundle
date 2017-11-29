@@ -15,17 +15,17 @@ class TwigParams
     /**
      * @var string
      */
-    private $sdk;
+    private $name;
 
     public function __construct(
         $path = '',
         $arguments = [],
-        string $sdk = ''
+        string $name = ''
     )
     {
         $this->setPath($path);
         $this->setArguments($arguments);
-        $this->setSdk($sdk);
+        $this->setName($name);
     }
 
     /**
@@ -63,16 +63,16 @@ class TwigParams
     /**
      * @return string
      */
-    public function getSdk(): string
+    public function getName(): string
     {
-        return $this->sdk;
+        return $this->name;
     }
 
     /**
-     * @param string $sdk
+     * @param string $name
      */
-    public function setSdk(string $sdk)
+    public function setName(string $name)
     {
-        $this->sdk = $sdk;
+        $this->name = $name;
     }
 }
