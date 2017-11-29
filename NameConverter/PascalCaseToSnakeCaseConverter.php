@@ -1,12 +1,12 @@
 <?php
 
-namespace JsSdkBundle\NameConverter;
+namespace CommonJsBundle\NameConverter;
 
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 
 class PascalCaseToSnakeCaseConverter extends CamelCaseToSnakeCaseNameConverter implements ProviderClassNameConverterInterface
 {
-    const PROVIDERS_NS = 'JsSdkBundle\Provider\Sdk\\';
+    const PROVIDERS_NS = 'CommonJsBundle\Provider\Js\\';
 
     public function normalize($propertyName)
     {

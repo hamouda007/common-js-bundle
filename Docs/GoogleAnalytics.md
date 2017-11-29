@@ -5,7 +5,7 @@ SDK name: **google_analytics**
 
 ## Models
 > *For the EC models see the [Google Developer Guide](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce)*
-### JsSdkBundle\Model\GoogleAnalytics\Event
+### CommonJsBundle\Model\GoogleAnalytics\Event
 - category
 - action
 - label
@@ -13,7 +13,7 @@ SDK name: **google_analytics**
 - nonInteraction
 
 
-### JsSdkBundle\Model\GoogleAnalytics\EcAction
+### CommonJsBundle\Model\GoogleAnalytics\EcAction
 - name (this must be a name of the action as documented [here](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#action-types))
 - id
 - affiliation
@@ -25,7 +25,7 @@ SDK name: **google_analytics**
 - step
 - option
 
-### JsSdkBundle\Model\GoogleAnalytics\EcImpression
+### CommonJsBundle\Model\GoogleAnalytics\EcImpression
 - id
 - name
 - list
@@ -35,7 +35,7 @@ SDK name: **google_analytics**
 - position
 - price
 
-### JsSdkBundle\Model\GoogleAnalytics\EcProduct
+### CommonJsBundle\Model\GoogleAnalytics\EcProduct
 - id
 - name
 - brand
@@ -46,7 +46,7 @@ SDK name: **google_analytics**
 - coupon
 - position
 
-### JsSdkBundle\Model\GoogleAnalytics\EcPromo
+### CommonJsBundle\Model\GoogleAnalytics\EcPromo
 - id
 - name
 - creative
@@ -55,7 +55,7 @@ SDK name: **google_analytics**
 ## Reference
 | Parameter | Default | Details |
 | :--- | :--- | :--- |
-| id | n/a (required) | Used in js_sdk_output function to initialise tracking code. E.g. 'UA-12345678' |
+| id | n/a (required) | Used in cjs_output function to initialise tracking code. E.g. 'UA-12345678' |
 | tracking_function | "ga" | The function variable to be used for tracking |
 | debug | false | Can enable debug mode on the analytics tracking code |
 | currency | "GBP" | Used in extended e-commerce tracking to define the default currency you are recording monetary values with |

@@ -1,10 +1,11 @@
 <?php
 
-namespace JsSdkBundle\Tests\src;
+namespace CommonJsBundle\Tests\src;
 
-use JsSdkBundle\Tests\Kernel;
+use CommonJsBundle\Tests\Kernel;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Yaml\Yaml;
 
 class TestControllerTest extends WebTestCase
@@ -96,37 +97,37 @@ class TestControllerTest extends WebTestCase
     {
         $env = 'google_analytics';
         $client = $this->getClient($env);
-        $this->assertUri($client, '/google-analytics/ec-invalid', false);
+        $crawler = $this->assertUri($client, '/google-analytics/ec-invalid', false);
         $this->assertEquals(500, $client->getResponse()->getStatusCode(), "500 error expected for an invalid model");
         $this->assertResponseContains($client, [
             "The expected error message is missing" => "Either ID or Name is required"
-        ]);
+        ], $crawler);
     }
 
     public function testMissingParameterException()
     {
         $env = 'empty';
         $client = $this->getClient($env);
-        $this->assertUri($client, '/google-analytics', false);
+        $crawler = $this->assertUri($client, '/google-analytics', false);
         $this->assertEquals(500, $client->getResponse()->getStatusCode(), "With twig strict variables, a 500 response should be returned as some twig variables are missing");
         $this->assertResponseContains($client, [
-            "The error response should be customised to give more information about which block in js_sdk is missing a variable" => 'js_sdk blocks'
-        ]);
+            "The error response should be customised to give more information about which block in common_js is missing a variable" => 'common_js blocks'
+        ], $crawler);
     }
 
     private function getParsedConfig(string $env)
     {
-        $data = Yaml::parse(file_get_contents(__DIR__ . '/../../config/packages/' . $env . '/js_sdk.yaml'));
-        return $data['js_sdk'][$env];
+        $data = Yaml::parse(file_get_contents(__DIR__ . '/../../config/packages/' . $env . '/common_js.yaml'));
+        return $data['common_js'][$env];
     }
 
-    private function assertResponseContains(Client $client, $datum)
+    private function assertResponseContains(Client $client, $datum, Crawler $crawler = null)
     {
         if (!is_array($datum)) {
             $datum = [$datum];
         }
         foreach ($datum as $message=>$data) {
-            $this->assertContains($data, $client->getResponse()->getContent(), $message);
+            $this->assertContains($data, !$client->getResponse()->isSuccessful() && $crawler ? $crawler->filter('title')->text() : $client->getResponse()->getContent(), $message);
         }
     }
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace JsSdkBundle\DependencyInjection;
+namespace CommonJsBundle\DependencyInjection;
 
-use JsSdkBundle\Provider\BaseProvider;
-use JsSdkBundle\ServiceProvider\ServiceProvider;
+use CommonJsBundle\Provider\BaseProvider;
+use CommonJsBundle\ServiceProvider\ServiceProvider;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 
-class JsSdkExtension extends Extension implements PrependExtensionInterface
+class CommonJsExtension extends Extension implements PrependExtensionInterface
 {
     public function load(array $configs, ContainerBuilder $container)
     {

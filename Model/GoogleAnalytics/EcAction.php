@@ -1,6 +1,6 @@
 <?php
 
-namespace JsSdkBundle\Model\GoogleAnalytics;
+namespace CommonJsBundle\Model\GoogleAnalytics;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -15,7 +15,7 @@ class EcAction
     /**
      * @var string
      * @Assert\NotBlank()
-     * @Assert\Callback({"JsSdkBundle\Provider\Sdk\GoogleAnalyticsProvider", "validateEcAction"})
+     * @Assert\Callback({"CommonJsBundle\Provider\Js\GoogleAnalyticsProvider", "validateEcAction"})
      */
     private $name;
 

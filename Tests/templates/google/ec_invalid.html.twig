@@ -1,4 +1,4 @@
 {% spaceless %}
-  {% set promo = js_sdk_model('google_analytics', 'ec_promo', []) %}
-  {{ js_sdk_add_block('google_analytics', 'ec/add_promo', null, false, {promo: promo}) }}
+  {% set promo = cjs_model('google_analytics', 'ec_promo', []) %}
+  {{ cjs_add_block('google_analytics', 'ec/add_promo', null, false, {promo: promo}) }}
 {% endspaceless %}

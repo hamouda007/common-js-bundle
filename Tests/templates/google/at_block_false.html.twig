@@ -1,2 +1,2 @@
-{% set event = js_sdk_model('google_analytics', 'event', ['category', 'action']) %}
-{{ js_sdk_add_block('google_analytics', 'event', "false", false, {event: event}) }}
+{% set event = cjs_model('google_analytics', 'event', ['category', 'action']) %}
+{{ cjs_add_block('google_analytics', 'event', "false", false, {event: event}) }}

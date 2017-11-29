@@ -1,8 +1,8 @@
 <?php
 
-namespace JsSdkBundle\Renderer;
+namespace CommonJsBundle\Renderer;
 
-use JsSdkBundle\Model\TwigParams;
+use CommonJsBundle\Model\TwigParams;
 
 class TwigParamsRenderer
 {
@@ -21,7 +21,7 @@ class TwigParamsRenderer
         try {
             return self::$twig->render($twigParams->getPath(), $twigParams->getArguments());
         } catch(\Twig_Error_Runtime $e) {
-            throw new \Twig_Error_Runtime('One of the js_sdk blocks you are trying to include has not been fully configured and is missing an option. For `'.$twigParams->getSdk().'`: ' . $e->getMessage());
+            throw new \Twig_Error_Runtime('One of the common_js blocks you are trying to include has not been fully configured and is missing an option. For `'.$twigParams->getSdk().'`: ' . $e->getMessage());
         }
     }
 }

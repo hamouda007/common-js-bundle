@@ -1,8 +1,8 @@
 <?php
 
-namespace JsSdkBundle\ServiceProvider;
+namespace CommonJsBundle\ServiceProvider;
 
-use JsSdkBundle\Provider\ProviderInterface;
+use CommonJsBundle\Provider\ProviderInterface;
 
 class ServiceProvider
 {

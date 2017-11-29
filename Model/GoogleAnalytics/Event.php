@@ -1,6 +1,6 @@
 <?php
 
-namespace JsSdkBundle\Model\GoogleAnalytics;
+namespace CommonJsBundle\Model\GoogleAnalytics;
 
 class Event
 {

@@ -1,18 +1,18 @@
 <?php
 
-namespace JsSdkBundle\Provider;
+namespace CommonJsBundle\Provider;
 
-use JsSdkBundle\Model\TwigParams;
-use JsSdkBundle\NameConverter\PascalCaseToSnakeCaseConverter;
-use JsSdkBundle\NameConverter\ProviderClassNameConverterInterface;
-use JsSdkBundle\Renderer\TwigParamsRenderer;
+use CommonJsBundle\Model\TwigParams;
+use CommonJsBundle\NameConverter\PascalCaseToSnakeCaseConverter;
+use CommonJsBundle\NameConverter\ProviderClassNameConverterInterface;
+use CommonJsBundle\Renderer\TwigParamsRenderer;
 use Symfony\Component\Validator\Exception\InvalidOptionsException;
 use Symfony\Component\Validator\Exception\ValidatorException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 abstract class BaseProvider implements ProviderInterface
 {
-    const MODEL_NAMESPACE = 'JsSdkBundle\\Model\\';
+    const MODEL_NAMESPACE = 'CommonJsBundle\\Model\\';
 
     /**
      * @var TwigParamsRenderer
@@ -87,7 +87,7 @@ abstract class BaseProvider implements ProviderInterface
      */
     public function getBlockPath(): string
     {
-        return '@JsSdk/blocks/' . $this->getBlockName() . '/';
+        return '@CommonJs/blocks/' . $this->getBlockName() . '/';
     }
 
     public function getBlockTwigParams(string $blockPath, array $args = []): TwigParams
@@ -202,7 +202,7 @@ abstract class BaseProvider implements ProviderInterface
 
     public function getNewModel(string $model, array $args = [])
     {
-        $fullClass = 'JsSdkBundle\\Model\\' . $this->getPascalCaseBlock() . '\\' . self::getConverter()->denormalize($model);
+        $fullClass = 'CommonJsBundle\\Model\\' . $this->getPascalCaseBlock() . '\\' . self::getConverter()->denormalize($model);
         return new $fullClass(...$args);
     }
 

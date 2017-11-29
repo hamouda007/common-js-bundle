@@ -1,13 +1,13 @@
 <?php
 
-namespace JsSdkBundle\Twig\Extension;
+namespace CommonJsBundle\Twig\Extension;
 
-use JsSdkBundle\Provider\BaseProvider;
-use JsSdkBundle\Provider\ProviderInterface;
-use JsSdkBundle\Renderer\TwigParamsRenderer;
-use JsSdkBundle\ServiceProvider\ServiceProvider;
+use CommonJsBundle\Provider\BaseProvider;
+use CommonJsBundle\Provider\ProviderInterface;
+use CommonJsBundle\Renderer\TwigParamsRenderer;
+use CommonJsBundle\ServiceProvider\ServiceProvider;
 
-class JsSdkExtension extends \Twig_Extension
+class CommonJsExtension extends \Twig_Extension
 {
     /**
      * @var ServiceProvider
@@ -27,15 +27,15 @@ class JsSdkExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('js_sdk_add_block', array($this, 'addBlock'), [
+            new \Twig_SimpleFunction('cjs_add_block', array($this, 'addBlock'), [
                 'is_safe' => ['html']
             ]),
-            new \Twig_SimpleFunction('js_sdk_output', array($this, 'output'), [
+            new \Twig_SimpleFunction('cjs_output', array($this, 'output'), [
                 'is_safe' => ['html']
             ]),
-            new \Twig_SimpleFunction('js_sdk_duplicate', array($this, 'duplicate')),
-            new \Twig_SimpleFunction('js_sdk_remove_block', array($this, 'removeBlock')),
-            new \Twig_SimpleFunction('js_sdk_model', array($this, 'newModel'))
+            new \Twig_SimpleFunction('cjs_duplicate', array($this, 'duplicate')),
+            new \Twig_SimpleFunction('cjs_remove_block', array($this, 'removeBlock')),
+            new \Twig_SimpleFunction('cjs_model', array($this, 'newModel'))
         ];
     }
 

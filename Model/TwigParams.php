@@ -1,6 +1,6 @@
 <?php
 
-namespace JsSdkBundle\Model;
+namespace CommonJsBundle\Model;
 
 class TwigParams
 {

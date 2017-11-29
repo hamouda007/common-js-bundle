@@ -1,6 +1,6 @@
 <?php
 
-namespace JsSdkBundle\DependencyInjection;
+namespace CommonJsBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\NodeBuilder;
@@ -12,7 +12,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('js_sdk');
+        $rootNode = $treeBuilder->root('common_js');
 
         $rootNode->normalizeKeys(false);
 

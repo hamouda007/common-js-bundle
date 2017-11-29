@@ -23,12 +23,12 @@
     "minimum-stability": "RC",
     "autoload": {
         "psr-4": {
-            "JsSdkBundle\\": ""
+            "CommonJsBundle\\": ""
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "JsSdkBundle\\Tests\\": "Tests/"
+            "CommonJsBundle\\Tests\\": "Tests/"
         }
     }
 }

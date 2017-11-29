@@ -1,6 +1,6 @@
 <?php
 
-namespace JsSdkBundle\Tests\src\Controller;
+namespace CommonJsBundle\Tests\src\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;

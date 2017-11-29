@@ -1,4 +1,4 @@
-js_sdk:
+common_js:
     google_analytics:
         id: UA-12345678
         debug: true

@@ -1,6 +1,6 @@
 <?php
 
-namespace JsSdkBundle\NameConverter;
+namespace CommonJsBundle\NameConverter;
 
 use Symfony\Component\Serializer\NameConverter\NameConverterInterface;
 

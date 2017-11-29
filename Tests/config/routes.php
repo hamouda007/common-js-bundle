@@ -1,6 +1,6 @@
 <?php
 
-namespace JsSdkBundle\Tests\config;
+namespace CommonJsBundle\Tests\config;
 
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
