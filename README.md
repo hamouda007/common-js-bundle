@@ -101,6 +101,9 @@ common_js:
 
 ### Supported Javascripts Docs
 #### [Google Analytics](Docs/GoogleAnalytics.md)
+#### [Google Tag Manager (GTM)](Docs/GoogleTagManager.md)
+#### [Twitter](Docs/Twitter.md)
+#### [Facebook SDK](Docs/FacebookSdk.md)
 
 ### Other Javascripts
 I have not implemented the other planned Javascript SDKs at the moment. Feel free to submit a PR if you're able to help or have another SDK suggestion (or indeed you have any more features or improvements you'd like to see in what is already implemented)
