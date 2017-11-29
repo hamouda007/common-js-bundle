@@ -2,10 +2,10 @@
 <script type="application/javascript">
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '{{ app_id }}',
-      xfbml      : {{ xfbml }},
+      appId      : '{{ id }}',
+      xfbml      : {{ xfbml ? 'true' : 'false' }},
       version    : '{{ version }}',
-      status     : '{{ status }}'
+      status     : {{ login_status_check ? 'true' : 'false' }}
     });
     FB.AppEvents.logPageView();
   };

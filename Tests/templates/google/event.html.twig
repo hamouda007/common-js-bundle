@@ -1,4 +1,4 @@
 {% set event = cjs_model('google_analytics', 'event', [ 'category', 'action', 'label', 'beacon', true ]) %}
 
 {{ cjs_add_block('google_analytics', 'event', null, false, {event: event}) }}
-{{ cjs_output('google_analytics') }}
+{{ cjs_js('google_analytics') }}

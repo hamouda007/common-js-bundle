@@ -1,6 +1,6 @@
 {
     "name": "silverbackis/common-js-bundle",
-    "description": "Silverback IS + British Websites JS SDK Bundle",
+    "description": "Silverback Common Javascript Bundle",
     "type": "symfony-bundle",
     "license": "MIT",
     "require": {

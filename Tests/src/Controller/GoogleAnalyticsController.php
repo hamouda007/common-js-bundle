@@ -5,10 +5,16 @@ namespace CommonJsBundle\Tests\src\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class TestController extends AbstractController
+/**
+ * Class GoogleAnalyticsController
+ * @package CommonJsBundle\Tests\src\Controller
+ * @author Daniel West <daniel@silverback.is>
+ * @Route("/google-analytics")
+ */
+class GoogleAnalyticsController extends AbstractController
 {
     /**
-     * @Route("/google-analytics")
+     * @Route("")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function googleAnalytics()
@@ -17,7 +23,7 @@ class TestController extends AbstractController
     }
 
     /**
-     * @Route("/google-analytics/duplicate")
+     * @Route("/duplicate")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function googleAnalyticsDuplicate()
@@ -26,7 +32,7 @@ class TestController extends AbstractController
     }
 
     /**
-     * @Route("/google-analytics/set")
+     * @Route("/set")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function googleAnalyticsSet()
@@ -35,7 +41,7 @@ class TestController extends AbstractController
     }
 
     /**
-     * @Route("/google-analytics/event")
+     * @Route("/event")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function googleAnalyticsEvent()
@@ -44,7 +50,7 @@ class TestController extends AbstractController
     }
 
     /**
-     * @Route("/google-analytics/return-js")
+     * @Route("/return-js")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function googleAnalyticsReturnJsFromBlock()
@@ -53,7 +59,7 @@ class TestController extends AbstractController
     }
 
     /**
-     * @Route("/google-analytics/ec")
+     * @Route("/ec")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function googleAnalyticsEc()
@@ -62,20 +68,11 @@ class TestController extends AbstractController
     }
 
     /**
-     * @Route("/google-analytics/ec-invalid")
+     * @Route("/ec-invalid")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function googleAnalyticsInvalidEc()
     {
         return $this->render('@Test/google/ec_invalid.html.twig');
-    }
-
-    /**
-     * @Route("/empty")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function emptyAction()
-    {
-        return $this->render('@Test/test_empty.html.twig');
     }
 }

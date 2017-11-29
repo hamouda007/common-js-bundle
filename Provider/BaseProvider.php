@@ -71,7 +71,7 @@ abstract class BaseProvider implements ProviderInterface
         $fullClass = get_class($this);
         $classParts = explode('\\', $fullClass);
         $class = array_pop($classParts);
-        return rtrim($class, 'Provider');
+        return preg_replace('/^(.+)Provider$/', '$1', $class);
     }
 
     /**
@@ -160,27 +160,33 @@ abstract class BaseProvider implements ProviderInterface
         self::$converter = new PascalCaseToSnakeCaseConverter();
     }
 
-    public function renderSdk(array $twigArgs = []): string
+    public function renderSdk(array $twigArgs = [], bool $noscript = false): string
     {
-        $scripts = '';
-        /**
-         * @var TwigParams $twigParams
-         */
-        foreach ($this->scripts as $twigParams)
-        {
-            $scripts .= $this->twigParamsRenderer->render($twigParams);
-        }
-
         $allTwigArgs = array_merge(
             $this->getTwigArgs() ?: [],
-            $twigArgs,
-            [
-                'scripts' => $scripts
-            ]
+            $twigArgs
         );
 
+        if (!$noscript) {
+            $scripts = '';
+            /**
+             * @var TwigParams $twigParams
+             */
+            foreach ($this->scripts as $twigParams)
+            {
+                $scripts .= $this->twigParamsRenderer->render($twigParams);
+            }
+
+            $allTwigArgs = array_merge(
+                $allTwigArgs,
+                [
+                    'scripts' => $scripts
+                ]
+            );
+        }
+
         $outputTwigParams = new TwigParams(
-            $this->getBlockPath() . 'init.html.twig',
+            $this->getBlockPath() . ($noscript ? 'html/' : '') . 'init.html.twig',
             $allTwigArgs,
             $this->getBlockName()
         );

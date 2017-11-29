@@ -30,7 +30,10 @@ class CommonJsExtension extends \Twig_Extension
             new \Twig_SimpleFunction('cjs_add_block', array($this, 'addBlock'), [
                 'is_safe' => ['html']
             ]),
-            new \Twig_SimpleFunction('cjs_output', array($this, 'output'), [
+            new \Twig_SimpleFunction('cjs_js', array($this, 'outputJs'), [
+                'is_safe' => ['html']
+            ]),
+            new \Twig_SimpleFunction('cjs_html', array($this, 'outputNoscript'), [
                 'is_safe' => ['html']
             ]),
             new \Twig_SimpleFunction('cjs_duplicate', array($this, 'duplicate')),
@@ -78,10 +81,31 @@ class CommonJsExtension extends \Twig_Extension
      * @param array $twigArgs
      * @return string
      */
-    public function output(string $sdk, array $twigArgs = [])
+    public function outputJs(string $sdk, array $twigArgs = [])
+    {
+        return $this->output($sdk, $twigArgs);
+    }
+
+    /**
+     * @param string $sdk
+     * @param array $twigArgs
+     * @return string
+     */
+    public function outputNoscript(string $sdk, array $twigArgs = [])
+    {
+        return $this->output($sdk, $twigArgs, true);
+    }
+
+    /**
+     * @param string $sdk
+     * @param array $twigArgs
+     * @param bool $noscript
+     * @return string
+     */
+    private function output(string $sdk, array $twigArgs = [], bool $noscript = false)
     {
         $provider = $this->getProvider($sdk);
-        return $provider->renderSdk($twigArgs);
+        return $provider->renderSdk($twigArgs, $noscript);
     }
 
     /**

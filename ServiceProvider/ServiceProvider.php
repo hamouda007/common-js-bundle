@@ -2,6 +2,7 @@
 
 namespace CommonJsBundle\ServiceProvider;
 
+use CommonJsBundle\Exception\NoProviderException;
 use CommonJsBundle\Provider\ProviderInterface;
 
 class ServiceProvider
@@ -15,6 +16,9 @@ class ServiceProvider
 
     public function getProvider($key)
     {
-        return isset($this->providers[$key]) ? $this->providers[$key] : null;
+        if (!isset($this->providers[$key])) {
+            throw new NoProviderException(sprintf('The provider "%s" does not exist, you should enable it in your config file', $key));
+        }
+        return $this->providers[$key];
     }
 }

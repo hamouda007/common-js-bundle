@@ -7,6 +7,9 @@
     bootstrap="Tests/bootstrap.php" >
     <php>
         <env name="BOOTSTRAP_CLEAR_CACHE_ENV" value="empty,google_analytics" />
+        <env name="GOOGLE_ANALYTICS_ID" value="UA-12345678" />
+        <env name="GTM_CONTAINER_ID" value="GTM-12345678" />
+        <env name="FACEBOOK_APP_ID" value="12345678" />
     </php>
     <logging>
         <log type="coverage-clover" target="clover.xml"/>

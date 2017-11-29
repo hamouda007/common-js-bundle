@@ -1,16 +1,17 @@
 # Common JS Bundle
+***Not affiliated with The CommonJS group***
 
 [![Build Status](https://travis-ci.org/silverbackis/common-js-bundle.svg?branch=master)](https://travis-ci.org/silverbackis/common-js-bundle)
 [![codecov](https://codecov.io/gh/silverbackis/common-js-bundle/branch/master/graph/badge.svg)](https://codecov.io/gh/silverbackis/common-js-bundle)
-[![Latest Stable Version](https://poser.pugx.org/silverbackis/common-js-bundle/version)](https://packagist.org/packages/silverbackis/common-js-bundle)
-[![Latest Unstable Version](https://poser.pugx.org/silverbackis/common-js-bundle/v/unstable)](//packagist.org/packages/silverbackis/common-js-bundle)
+[![Latest Stable Version](https://poser.pugx.org/silverbackis/common-js-bundle/v/stable)](https://packagist.org/packages/silverbackis/common-js-bundle)
+[![Latest Unstable Version](https://poser.pugx.org/silverbackis/common-js-bundle/v/unstable)](https://packagist.org/packages/silverbackis/common-js-bundle)
 [![License](https://poser.pugx.org/silverbackis/common-js-bundle/license)](https://packagist.org/packages/silverbackis/common-js-bundle)
 
-This bundle provides twig functions to easily add common Javascript tags & SDKs to any page.
+This bundle provides twig functions to easily add commonly used Javascript tags & SDKs to any page.
 
 By default this bundle will support
 - Google Analytics
-- Google Tag Manager
+- Google Tag Manager (GTM)
 - Facebook Javascript SDK
 - Twitter for Websites
 
@@ -49,9 +50,14 @@ To generate a new model to be inserted as a parameter you can use `cjs_model` - 
 {{ cjs_add_block(name, block_name, null, false, { param_name: my_model }) }}
 ```
 
-Finally to output the scripts **after** all the blocks have been configured for a given block use the `cjs_output` function
+Finally to output the scripts **after** all the blocks have been configured for a given block use the `cjs_js` function
 ```twig
-{{ cjs_output(sdk_name, override_params_object) }}
+{{ cjs_js(name, override_params_object) }}
+```
+
+If there is an noscript fallback specified, you will want to output this at a different section in your template. This is implemented when using GTM for example. Yuu can output the fallback HTML using `cjs_html`
+```twig
+{{ cjs_noscript(name, override_params_object) }}
 ```
 
 ### Configuration
@@ -81,7 +87,7 @@ Some parameters are common across all SDKs. You cannot pass the `default_blocks`
 | Parameter | Default | Details |
 | --- | --- | --- |
 | enabled | false | Enable the SDK |
-| default_blocks | false | Can be an array of blocks you want. You can also include parameters if you want. Cannot be defined from a twig template. This config parameter will pre-populate blocks in the order provided so you can just write `{{ cjs_output('sdk_name') }}` in your twig template |
+| default_blocks | false | Can be an array of blocks you want. You can also include parameters if you want. Cannot be defined from a twig template. This config parameter will pre-populate blocks in the order provided so you can just write `{{ cjs_js('sdk_name') }}` in your twig template |
 
 ```yaml
 common_js:
@@ -100,4 +106,8 @@ common_js:
 I have not implemented the other planned Javascript SDKs at the moment. Feel free to submit a PR if you're able to help or have another SDK suggestion (or indeed you have any more features or improvements you'd like to see in what is already implemented)
 
 ### Contributing a new Javascript
-Adding an SDK is pretty straight forwards. A new Provider is required in `CommonJsBundle\Provider\Sdk` extending `CommonJsBundle\Provider\BaseProvider`. In the dependency injection new configuration parameters may be required and models can be added in the `CommonJsBundle\Model\PascalCaseSdkName` namespace where PascalCaseSdkName is the name of the SDK in Pascal Case. Template blocks are added in `Resources/views/blocks/sdk_snake_case_name` with an `init.html.twig` file and then a sub directory `js` for all blocks needed.
+Adding an SDK is pretty straight forwards.
+- A new Provider is required in `CommonJsBundle\Provider\Sdk` extending `CommonJsBundle\Provider\BaseProvider`.
+- In the dependency injection new configuration parameters will be required
+- Models can be added in the `CommonJsBundle\Model\PascalCaseName` namespace where PascalCaseName is the name of the new javascript in PascalCase.
+- Template blocks are added in `Resources/views/blocks/sdk_snake_case_name` with an `init.html.twig` file and then a sub directory `js` for all blocks needed.

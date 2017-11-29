@@ -7,6 +7,7 @@ use Symfony\Component\Config\Definition\Builder\NodeBuilder;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
+
 class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder()
@@ -16,20 +17,58 @@ class Configuration implements ConfigurationInterface
 
         $rootNode->normalizeKeys(false);
 
-        $this->addGoogleAnalyticsSection($rootNode);
+        $this->addGoogleAnalytics($rootNode);
+        $this->addFacebookSdk($rootNode);
+        $this->addGtm($rootNode);
+        $this->addTwitter($rootNode);
 
         $rootNode->end();
         return $treeBuilder;
     }
 
-    private function addGoogleAnalyticsSection(ArrayNodeDefinition $rootNode)
+    private function addGoogleAnalytics(ArrayNodeDefinition $rootNode)
     {
         $rootNode = $this->addSDKNode($rootNode, 'google_analytics');
         $rootNode
-            ->scalarNode('id')->cannotBeEmpty()->end()
+            ->scalarNode('id')->cannotBeEmpty()->defaultValue(getenv('GOOGLE_ANALYTICS_ID'))->end()
             ->booleanNode('debug')->defaultFalse()->end()
             ->scalarNode('currency')->defaultValue('GBP')->end()
             ->scalarNode('tracking_function')->defaultValue('ga')->end()
+        ;
+        $this->endSdkNode($rootNode);
+    }
+
+    private function addFacebookSdk(ArrayNodeDefinition $rootNode)
+    {
+        $rootNode = $this->addSDKNode($rootNode, 'facebook_sdk');
+        $rootNode
+            ->scalarNode('id')->cannotBeEmpty()->defaultValue(getenv('FACEBOOK_APP_ID'))->end()
+            ->booleanNode('xfbml')->defaultTrue()->end()
+            ->scalarNode('version')->cannotBeEmpty()->defaultValue('v2.11')->end()
+            ->scalarNode('language')->cannotBeEmpty()->defaultValue('en_GB')->end()
+            ->booleanNode('login_status_check')->defaultFalse()->end()
+            ->booleanNode('debug')->defaultFalse()->end()
+        ;
+        $this->endSdkNode($rootNode);
+    }
+
+    private function addGtm(ArrayNodeDefinition $rootNode)
+    {
+        $rootNode = $this->addSDKNode($rootNode, 'gtm');
+        $rootNode
+            ->scalarNode('id')->cannotBeEmpty()->defaultValue(getenv('GTM_CONTAINER_ID'))->end()
+            ->scalarNode('data_layer')->cannotBeEmpty()->defaultValue('dataLayer')->end()
+            ->arrayNode('data')->end()
+        ;
+        $this->endSdkNode($rootNode);
+    }
+
+    private function addTwitter(ArrayNodeDefinition $rootNode)
+    {
+        $rootNode = $this->addSDKNode($rootNode, 'twitter');
+        $rootNode
+            ->scalarNode('script_id')->cannotBeEmpty()->defaultValue('twitter-wjs')->end()
+            ->scalarNode('function_name')->cannotBeEmpty()->defaultValue('twttr')->end()
         ;
         $this->endSdkNode($rootNode);
     }

@@ -59,9 +59,10 @@ interface ProviderInterface
 
     /**
      * @param array $twigArgs
+     * @param bool $noscript
      * @return string
      */
-    function renderSdk(array $twigArgs = []): string;
+    function renderSdk(array $twigArgs = [], bool $noscript = false): string;
 
     /**
      * @param array $twigArgs

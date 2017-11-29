@@ -1,7 +1,7 @@
 [< Back to main Readme](../README.md)
 
 # Google Analytics
-SDK name: **google_analytics**
+name: **google_analytics**
 
 ## Models
 > *For the EC models see the [Google Developer Guide](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce)*
@@ -55,7 +55,7 @@ SDK name: **google_analytics**
 ## Reference
 | Parameter | Default | Details |
 | :--- | :--- | :--- |
-| id | n/a (required) | Used in cjs_output function to initialise tracking code. E.g. 'UA-12345678' |
+| id | n/a (required) | Used in cjs_js function to initialise tracking code. E.g. 'UA-12345678' |
 | tracking_function | "ga" | The function variable to be used for tracking |
 | debug | false | Can enable debug mode on the analytics tracking code |
 | currency | "GBP" | Used in extended e-commerce tracking to define the default currency you are recording monetary values with |

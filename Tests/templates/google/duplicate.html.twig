@@ -1,6 +1,6 @@
 {% include '@Test/google/basic.html.twig' %}
 {{ cjs_duplicate('google_analytics', 'analytics_new', {tracking_function: 'ga_extra', id: 'UA-98765432'}) }}
 {{ cjs_duplicate('google_analytics', 'analytics_new_new', {tracking_function: 'ga_extra_extra', id: 'UA-5555555'}) }}
-{{ cjs_output('analytics_new') }}
+{{ cjs_js('analytics_new') }}
 {{ cjs_remove_block('analytics_new_new', 'ec/init') }}
-{{ cjs_output('analytics_new_new') }}
+{{ cjs_js('analytics_new_new') }}

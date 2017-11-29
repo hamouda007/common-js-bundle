@@ -1,6 +1,5 @@
 common_js:
     google_analytics:
-        id: UA-12345678
         debug: true
         default_blocks:
             page_view: ~

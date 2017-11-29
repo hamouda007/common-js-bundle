@@ -1,7 +1,7 @@
 <script type="application/javascript">
-  window.{{ twitter_var }} = (function(d, s, id) {
+  window.{{ function_name }} = (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0],
-      t = window.{{ twitter_var }} || {};
+      t = window.{{ function_name }} || {};
     if (d.getElementById(id)) return t;
     js = d.createElement(s);
     js.id = id;
@@ -12,5 +12,5 @@
       t._e.push(f);
     };
     return t;
-  }(document, "script", {{ twitter_script_id }}));
+  }(document, "script", "{{ script_id }}"));
 </script>
