@@ -1,5 +1,5 @@
 {
-    "name": "silverbackis/js-sdk-bundle",
+    "name": "silverbackis/common-js-bundle",
     "description": "Silverback IS + British Websites JS SDK Bundle",
     "type": "symfony-bundle",
     "license": "MIT",
