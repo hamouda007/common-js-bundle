@@ -21,7 +21,7 @@ class FacebookSdkControllerTest extends WebTestCase
       status     : false
     });
 ",
-            "The wrong sdk script is being loaded" => "js.src = \"//connect.facebook.net/en_GB/sdk.js\";"
+            "The wrong sdk script is being loaded" => "js.src = \"//connect.facebook.net/en_GB/sdk/debug.js\";"
         ]);
     }
 

@@ -10,6 +10,18 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 class Configuration implements ConfigurationInterface
 {
+    /**
+     * @var bool
+     */
+    private $debug;
+
+    public function __construct(
+        bool $debug
+    )
+    {
+        $this->debug = $debug;
+    }
+
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
@@ -31,9 +43,9 @@ class Configuration implements ConfigurationInterface
         $rootNode = $this->addSDKNode($rootNode, 'google_analytics');
         $rootNode
             ->scalarNode('id')->cannotBeEmpty()->defaultValue(getenv('GOOGLE_ANALYTICS_ID'))->end()
-            ->booleanNode('debug')->defaultFalse()->end()
             ->scalarNode('currency')->defaultValue('GBP')->end()
             ->scalarNode('tracking_function')->defaultValue('ga')->end()
+            ->booleanNode('debug')->defaultValue($this->debug)->end()
         ;
         $this->endSdkNode($rootNode);
     }
@@ -47,7 +59,7 @@ class Configuration implements ConfigurationInterface
             ->scalarNode('version')->cannotBeEmpty()->defaultValue('v2.11')->end()
             ->scalarNode('language')->cannotBeEmpty()->defaultValue('en_GB')->end()
             ->booleanNode('login_status_check')->defaultFalse()->end()
-            ->booleanNode('debug')->defaultFalse()->end()
+            ->booleanNode('debug')->defaultValue($this->debug)->end()
         ;
         $this->endSdkNode($rootNode);
     }

@@ -31,7 +31,7 @@ Javascript blocks can be configured directly from your twig templates using the 
 ```twig
 {{ cjs_add_block(name, block_name, at_block_name, before_at_block_name, override_params_object) }}
 ```
->`at_sdk_block_name` can be `"false"` (note this is a string) which will result in the function returning the javascript for you to insert. You may which to track a click event for example when a user clicks a link instead of in the main tracking code.
+>`at_block_name` can be `"false"` (note this is a string) which will result in the function returning the javascript for you to insert. You may which to track a click event for example when a user clicks a link instead of in the main tracking code.
 
 You can duplicate an SDK block including any blocks that have already been configured
 ```twig
@@ -86,12 +86,12 @@ Some parameters are common across all SDKs. You cannot pass the `default_blocks`
 
 | Parameter | Default | Details |
 | --- | --- | --- |
-| enabled | false | Enable the SDK |
-| default_blocks | false | Can be an array of blocks you want. You can also include parameters if you want. Cannot be defined from a twig template. This config parameter will pre-populate blocks in the order provided so you can just write `{{ cjs_js('sdk_name') }}` in your twig template |
+| enabled | false | Enable the scripts so they can be included |
+| default_blocks | false | Can be an array of blocks you want. You can also include parameters if you want. Cannot be defined from a twig template. This config parameter will pre-populate blocks in the order provided so you can just write `{{ cjs_js('name') }}` in your twig template |
 
 ```yaml
 common_js:
-    sdk_name:
+    name:
         default_blocks:
             block_name: ~
             "another/block_name":
@@ -110,4 +110,4 @@ Adding an SDK is pretty straight forwards.
 - A new Provider is required in `CommonJsBundle\Provider\Sdk` extending `CommonJsBundle\Provider\BaseProvider`.
 - In the dependency injection new configuration parameters will be required
 - Models can be added in the `CommonJsBundle\Model\PascalCaseName` namespace where PascalCaseName is the name of the new javascript in PascalCase.
-- Template blocks are added in `Resources/views/blocks/sdk_snake_case_name` with an `init.html.twig` file and then a sub directory `js` for all blocks needed.
+- Template blocks are added in `Resources/views/blocks/snake_case_name` with an `init.html.twig` file and then a sub directory `js` for all blocks needed.

@@ -30,7 +30,8 @@ class CommonJsExtension extends Extension implements PrependExtensionInterface
 
     private function readConfigs(array $configs, ContainerBuilder $container)
     {
-        $configuration = new Configuration();
+        $debug = $container->getParameter('kernel.debug');
+        $configuration = new Configuration($debug);
         $config = $this->processConfiguration($configuration, $configs);
         $converter = BaseProvider::getConverter();
         $provider = $container->getDefinition(ServiceProvider::class);
