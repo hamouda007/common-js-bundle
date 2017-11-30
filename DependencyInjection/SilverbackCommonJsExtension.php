@@ -59,7 +59,7 @@ class SilverbackCommonJsExtension extends Extension implements PrependExtensionI
     {
         $container->prependExtensionConfig('framework', [
             'validation' => [
-                'enable_annotations' => true
+                'enabled' => true
             ]
         ]);
     }

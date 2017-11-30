@@ -2,15 +2,24 @@
 
 namespace Silverback\CommonJsBundle\Model\GoogleAnalytics;
 
+use Silverback\CommonJsBundle\Provider\Js\GoogleAnalyticsProvider;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 /**
  * Class EcImpression
  * @package Silverback\CommonJsBundle\Model\GoogleAnalytics
- * @Assert\Callback({"Silverback\CommonJsBundle\Provider\Js\GoogleAnalyticsProvider", "validateNameOrId"})
  */
 class EcImpression implements EcNameIdInterface
 {
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addConstraint(new Assert\Callback([
+                                                         GoogleAnalyticsProvider::class,
+                                                         'validateNameOrId'
+                                                     ]));
+    }
+
     /** @var string|null */
     private $id;
 

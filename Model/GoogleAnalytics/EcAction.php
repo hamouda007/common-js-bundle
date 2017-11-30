@@ -2,20 +2,29 @@
 
 namespace Silverback\CommonJsBundle\Model\GoogleAnalytics;
 
+use Silverback\CommonJsBundle\Provider\Js\GoogleAnalyticsProvider;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 class EcAction
 {
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('id', new Assert\NotBlank());
+        $metadata->addPropertyConstraint('name', new Assert\NotBlank());
+        $metadata->addPropertyConstraint('name', new Assert\Callback([
+            GoogleAnalyticsProvider::class,
+            'validateEcAction'
+        ]));
+    }
+
     /**
      * @var string
-     * @Assert\NotBlank()
      */
     private $id;
 
     /**
      * @var string
-     * @Assert\NotBlank()
-     * @Assert\Callback({"Silverback\CommonJsBundle\Provider\Js\GoogleAnalyticsProvider", "validateEcAction"})
      */
     private $name;
 
