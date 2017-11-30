@@ -61,43 +61,39 @@ If there is an noscript fallback specified, you will want to output this at a di
 ```
 
 ### Configuration
-Each parameter for an SDK can be configured in your *silverback_common_js.yaml* file. This is an example for Google Analytics. Not all parameters are required. There is an optional `enabled` parameter not shown below.
+Your config file included by Flex should look like this:
 ```yaml
 # config/packages/silverback_common_js.yaml
+# Enable and configure the scripts you'd like
 silverback_common_js:
     google_analytics:
-        id: '%env(GOOGLE_ANALYTICS_ID)%'
+        # in each script you can also define the enabled key
+        # and default blocks so you don't have to do this in your twig templates
+        enabled: false
+#        default_blocks:
+#            page_view: ~
+#            "ec/init":
+#                currency: USD
+    gtm: false
+    twitter: false
+    facebook_sdk: false
 ```
+`default_blocks` can be an array of blocks you want. You can also include parameters if you want. It will pre-populate blocks in the order provided so you can just write `{{ cjs_js('name') }}` in your twig template
 
-If an SDK has been enabled in one configuration, you can disable in another environment config file by setting the SDK name to false:
-```yaml
-# config/packages/dev/silverback_common_js.yaml
-silverback_common_js:
-    google_analytics: false
+> You cannot pass the `default_blocks` variable in via the twig template, but you can still remove and modify the default blocks from the template using `cjs_add_block()` and `cjs_remove_block()` functions
+
+This sample config should really be all you need. Other variables are set by default but in docs for eachof the scripts you'll see all the options you could pass.
+
+Identifiers will be added as environment variables by Flex into your **.env** file.
+```dotenv
+#GOOGLE_ANALYTICS_ID = UA-XXXXXXXX
+#GTM_CONTAINER_ID = GTM-XXXXXXXX
+#FACEBOOK_APP_ID = XXXXXXXX
 ```
-
-Using Symfony Flex, you will have new environment variables to configure for whichever blocks you'd like to use in your `.env` file.
+Simply uncomment the environment variables for the scripts you want to enable.
 
 ### Models
-There are models available for some SDK blocks (e.g. Google Analytics Event). You can use these to easily construct and pass data to a block. All models allow you to define all the variables in the constructor (in the order they are documented here) and also have getters and setters.
-
-## SDK Names, Blocks and Configuration Parameters
-Some parameters are common across all SDKs. You cannot pass the `default_blocks` variable in via the twig template, but you can still remove and modify the default blocks from the template using `cjs_add_block()` and `cjs_remove_block()` functions
-
-| Parameter | Default | Details |
-| --- | --- | --- |
-| enabled | false | Enable the scripts so they can be included |
-| default_blocks | false | Can be an array of blocks you want. You can also include parameters if you want. Cannot be defined from a twig template. This config parameter will pre-populate blocks in the order provided so you can just write `{{ cjs_js('name') }}` in your twig template |
-
-```yaml
-silverback_common_js:
-    name:
-        default_blocks:
-            block_name: ~
-            "another/block_name":
-                param1: value1
-                param2: value2
-```
+There are models available for some SDK blocks (e.g. Google Analytics Event). You can use these to easily construct and pass data to a block. All models allow you to define all the variables in the constructor (in the order they are documented here) and also have getters and setters. Examples are provided in the individual script docs.
 
 ### Supported Javascripts Docs
 #### [Google Analytics](Docs/GoogleAnalytics.md)
