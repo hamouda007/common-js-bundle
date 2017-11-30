@@ -61,18 +61,18 @@ If there is an noscript fallback specified, you will want to output this at a di
 ```
 
 ### Configuration
-Each parameter for an SDK can be configured in your *common_js.yaml* file. This is an example for Google Analytics. Not all parameters are required. There is an optional `enabled` parameter not shown below.
+Each parameter for an SDK can be configured in your *silverback_common_js.yaml* file. This is an example for Google Analytics. Not all parameters are required. There is an optional `enabled` parameter not shown below.
 ```yaml
-# config/packages/common_js.yaml
-common_js:
+# config/packages/silverback_common_js.yaml
+silverback_common_js:
     google_analytics:
         id: '%env(GOOGLE_ANALYTICS_ID)%'
 ```
 
 If an SDK has been enabled in one configuration, you can disable in another environment config file by setting the SDK name to false:
 ```yaml
-# config/packages/dev/common_js.yaml
-common_js:
+# config/packages/dev/silverback_common_js.yaml
+silverback_common_js:
     google_analytics: false
 ```
 
@@ -90,7 +90,7 @@ Some parameters are common across all SDKs. You cannot pass the `default_blocks`
 | default_blocks | false | Can be an array of blocks you want. You can also include parameters if you want. Cannot be defined from a twig template. This config parameter will pre-populate blocks in the order provided so you can just write `{{ cjs_js('name') }}` in your twig template |
 
 ```yaml
-common_js:
+silverback_common_js:
     name:
         default_blocks:
             block_name: ~
