@@ -1,6 +1,6 @@
 {
     "name": "silverbackis/common-js-bundle",
-    "description": "Silverback IS Common Javascript Bundle",
+    "description": "Symfony bundle to quickly and easily add commonly used Javascript into your Twig templates.",
     "type": "symfony-bundle",
     "license": "MIT",
     "require": {

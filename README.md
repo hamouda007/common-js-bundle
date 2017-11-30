@@ -3,8 +3,6 @@
 
 [![Build Status](https://travis-ci.org/silverbackis/common-js-bundle.svg?branch=master)](https://travis-ci.org/silverbackis/common-js-bundle)
 [![codecov](https://codecov.io/gh/silverbackis/common-js-bundle/branch/master/graph/badge.svg)](https://codecov.io/gh/silverbackis/common-js-bundle)
-[![Packagist](https://img.shields.io/packagist/v/silverbackis/common-js-bundle.svg)](https://packagist.org/packages/silverbackis/common-js-bundle)
-[![Packagist Pre Release](https://img.shields.io/packagist/vpre/silverbackis/common-js-bundle.svg)](https://packagist.org/packages/silverbackis/common-js-bundle)
 [![license](https://img.shields.io/github/license/silverbackis/common-js-bundle.svg)](LICENCE)
 
 This bundle provides twig functions to easily add commonly used Javascript tags & SDKs to any page.

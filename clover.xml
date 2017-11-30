@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1512043803">
-  <project timestamp="1512043803">
+<coverage generated="1512044426">
+  <project timestamp="1512044426">
     <package name="Silverback\CommonJsBundle\DependencyInjection">
       <file name="/Volumes/LaCie/GitHub/_Bundles/common-js-bundle/DependencyInjection/Configuration.php">
         <class name="Configuration" namespace="Silverback\CommonJsBundle\DependencyInjection">
