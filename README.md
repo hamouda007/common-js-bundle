@@ -22,8 +22,25 @@ All default configurations and examples assume you are using Symfony Flex.
 
 ## Installation
 This bundle will be submitted to the Symfony Flex contrib repository shortly with some example configs. If you're using flex, the bundle will automatically be added into yor bundles.php file though.
+
+Enable the Symfony Flex Recipes Contrib Repository
 ```bash
-composer req silverbackis/common-js-bundle@alpha
+composer config extra.symfony.allow-contrib true
+```
+
+Until merged set the SYMFONY_ENDPOINT env var:
+```bash
+export SYMFONY_ENDPOINT=https://symfony.sh/r/github.com/symfony/recipes-contrib/159
+```
+
+Install the bundle:
+```bash
+composer req "silverbackis/common-js-bundle:^1.0@beta"
+```
+
+Until merged, unset the environment variable:
+```bash
+unset SYMFONY_ENDPOINT
 ```
 
 ## Getting Started
