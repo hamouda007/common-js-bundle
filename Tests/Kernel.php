@@ -1,6 +1,6 @@
 <?php
 
-namespace CommonJsBundle\Tests;
+namespace Silverback\CommonJsBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;

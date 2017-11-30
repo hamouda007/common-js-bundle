@@ -1,8 +1,8 @@
 <?php
 
-namespace CommonJsBundle\Twig\Extension;
+namespace Silverback\CommonJsBundle\Twig\Extension;
 
-use CommonJsBundle\Serializer\Normalizer\ExcludeNullObjectNormalizer;
+use Silverback\CommonJsBundle\Serializer\Normalizer\ExcludeNullObjectNormalizer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Serializer;

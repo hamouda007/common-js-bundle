@@ -5,7 +5,7 @@ name: **google_analytics**
 
 ## Models
 > *For the EC models see the [Google Developer Guide](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce)*
-### CommonJsBundle\Model\GoogleAnalytics\Event
+### Silverback\CommonJsBundle\Model\GoogleAnalytics\Event
 - category
 - action
 - label
@@ -13,7 +13,7 @@ name: **google_analytics**
 - nonInteraction
 
 
-### CommonJsBundle\Model\GoogleAnalytics\EcAction
+### Silverback\CommonJsBundle\Model\GoogleAnalytics\EcAction
 - name (this must be a name of the action as documented [here](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#action-types))
 - id
 - affiliation
@@ -25,7 +25,7 @@ name: **google_analytics**
 - step
 - option
 
-### CommonJsBundle\Model\GoogleAnalytics\EcImpression
+### Silverback\CommonJsBundle\Model\GoogleAnalytics\EcImpression
 - id
 - name
 - list
@@ -35,7 +35,7 @@ name: **google_analytics**
 - position
 - price
 
-### CommonJsBundle\Model\GoogleAnalytics\EcProduct
+### Silverback\CommonJsBundle\Model\GoogleAnalytics\EcProduct
 - id
 - name
 - brand
@@ -46,7 +46,7 @@ name: **google_analytics**
 - coupon
 - position
 
-### CommonJsBundle\Model\GoogleAnalytics\EcPromo
+### Silverback\CommonJsBundle\Model\GoogleAnalytics\EcPromo
 - id
 - name
 - creative

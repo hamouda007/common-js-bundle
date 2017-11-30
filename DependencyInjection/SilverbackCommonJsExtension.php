@@ -1,9 +1,9 @@
 <?php
 
-namespace CommonJsBundle\DependencyInjection;
+namespace Silverback\CommonJsBundle\DependencyInjection;
 
-use CommonJsBundle\Provider\BaseProvider;
-use CommonJsBundle\ServiceProvider\ServiceProvider;
+use Silverback\CommonJsBundle\Provider\BaseProvider;
+use Silverback\CommonJsBundle\ServiceProvider\ServiceProvider;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 
-class CommonJsExtension extends Extension implements PrependExtensionInterface
+class SilverbackCommonJsExtension extends Extension implements PrependExtensionInterface
 {
     public function load(array $configs, ContainerBuilder $container)
     {

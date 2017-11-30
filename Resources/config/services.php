@@ -1,10 +1,10 @@
 <?php
 
-namespace CommonJsBundle\Resources\config;
+namespace Silverback\CommonJsBundle\Resources\config;
 
-use CommonJsBundle\Renderer\TwigParamsRenderer;
-use CommonJsBundle\Twig\Extension\CommonJsExtension;
-use CommonJsBundle\ServiceProvider\ServiceProvider;
+use Silverback\CommonJsBundle\Renderer\TwigParamsRenderer;
+use Silverback\CommonJsBundle\Twig\Extension\CommonJsExtension;
+use Silverback\CommonJsBundle\ServiceProvider\ServiceProvider;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return function(ContainerConfigurator $configurator) {
@@ -20,7 +20,7 @@ return function(ContainerConfigurator $configurator) {
     $services
         ->set(ServiceProvider::class)
         ->set(TwigParamsRenderer::class)
-        ->load('CommonJsBundle\\Twig\\Extension\\', '../../Twig/Extension/*')
-        ->load('CommonJsBundle\\Provider\\', '../../Provider/*')
+        ->load('Silverback\\CommonJsBundle\\Twig\\Extension\\', '../../Twig/Extension/*')
+        ->load('Silverback\\CommonJsBundle\\Provider\\', '../../Provider/*')
     ;
 };

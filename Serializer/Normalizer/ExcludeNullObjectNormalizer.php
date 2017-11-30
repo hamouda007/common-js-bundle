@@ -1,6 +1,6 @@
 <?php
 
-namespace CommonJsBundle\Serializer\Normalizer;
+namespace Silverback\CommonJsBundle\Serializer\Normalizer;
 
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 

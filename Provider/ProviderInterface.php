@@ -1,9 +1,9 @@
 <?php
 
-namespace CommonJsBundle\Provider;
+namespace Silverback\CommonJsBundle\Provider;
 
-use CommonJsBundle\Model\TwigParams;
-use CommonJsBundle\NameConverter\ProviderClassNameConverterInterface;
+use Silverback\CommonJsBundle\Model\TwigParams;
+use Silverback\CommonJsBundle\NameConverter\ProviderClassNameConverterInterface;
 
 interface ProviderInterface
 {

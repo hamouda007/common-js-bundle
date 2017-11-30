@@ -1,9 +1,9 @@
 <?php
 
-namespace CommonJsBundle\Provider\Js;
+namespace Silverback\CommonJsBundle\Provider\Js;
 
-use CommonJsBundle\Model\GoogleAnalytics\EcNameIdInterface;
-use CommonJsBundle\Provider\BaseProvider;
+use Silverback\CommonJsBundle\Model\GoogleAnalytics\EcNameIdInterface;
+use Silverback\CommonJsBundle\Provider\BaseProvider;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 final class GoogleAnalyticsProvider extends BaseProvider

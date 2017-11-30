@@ -1,6 +1,6 @@
 <?php
 
-namespace CommonJsBundle\Model\GoogleAnalytics;
+namespace Silverback\CommonJsBundle\Model\GoogleAnalytics;
 
 interface EcNameIdInterface
 {

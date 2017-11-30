@@ -1,13 +1,13 @@
 <?php
 
-namespace CommonJsBundle\Model\GoogleAnalytics;
+namespace Silverback\CommonJsBundle\Model\GoogleAnalytics;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class EcImpression
- * @package CommonJsBundle\Model\GoogleAnalytics
- * @Assert\Callback({"CommonJsBundle\Provider\Js\GoogleAnalyticsProvider", "validateNameOrId"})
+ * @package Silverback\CommonJsBundle\Model\GoogleAnalytics
+ * @Assert\Callback({"Silverback\CommonJsBundle\Provider\Js\GoogleAnalyticsProvider", "validateNameOrId"})
  */
 class EcImpression implements EcNameIdInterface
 {

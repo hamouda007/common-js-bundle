@@ -1,19 +1,18 @@
 <?php
 
-namespace CommonJsBundle\Provider;
+namespace Silverback\CommonJsBundle\Provider;
 
-use CommonJsBundle\Model\TwigParams;
-use CommonJsBundle\NameConverter\PascalCaseToSnakeCaseConverter;
-use CommonJsBundle\NameConverter\ProviderClassNameConverterInterface;
-use CommonJsBundle\Renderer\TwigParamsRenderer;
+use Silverback\CommonJsBundle\Model\TwigParams;
+use Silverback\CommonJsBundle\NameConverter\PascalCaseToSnakeCaseConverter;
+use Silverback\CommonJsBundle\NameConverter\ProviderClassNameConverterInterface;
+use Silverback\CommonJsBundle\Renderer\TwigParamsRenderer;
+use Silverback\CommonJsBundle\Util\NamespaceGetter;
 use Symfony\Component\Validator\Exception\InvalidOptionsException;
 use Symfony\Component\Validator\Exception\ValidatorException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 abstract class BaseProvider implements ProviderInterface
 {
-    const MODEL_NAMESPACE = 'CommonJsBundle\\Model\\';
-
     /**
      * @var TwigParamsRenderer
      */
@@ -71,7 +70,7 @@ abstract class BaseProvider implements ProviderInterface
         $fullClass = get_class($this);
         $classParts = explode('\\', $fullClass);
         $class = array_pop($classParts);
-        return preg_replace('/^(.+)Provider$/', '$1', $class);
+        return preg_replace('/Provider$/', '', $class);
     }
 
     /**
@@ -87,7 +86,7 @@ abstract class BaseProvider implements ProviderInterface
      */
     public function getBlockPath(): string
     {
-        return '@CommonJs/blocks/' . $this->getBlockName() . '/';
+        return NamespaceGetter::getTwigNamespace() . '/blocks/' . $this->getBlockName() . '/';
     }
 
     public function getBlockTwigParams(string $blockPath, array $args = []): TwigParams
@@ -114,7 +113,7 @@ abstract class BaseProvider implements ProviderInterface
     {
         foreach($args as $param)
         {
-            if(is_object($param) && strpos(get_class($param), self::MODEL_NAMESPACE . $this->getPascalCaseBlock() . '\\') === 0)
+            if(is_object($param) && 0 === strpos(get_class($param), NamespaceGetter::getModelNamespace() . $this->getPascalCaseBlock() . '\\'))
             {
                 $errors = $this->validator->validate($param);
                 if (count($errors) > 0) {
@@ -208,7 +207,7 @@ abstract class BaseProvider implements ProviderInterface
 
     public function getNewModel(string $model, array $args = [])
     {
-        $fullClass = 'CommonJsBundle\\Model\\' . $this->getPascalCaseBlock() . '\\' . self::getConverter()->denormalize($model);
+        $fullClass = NamespaceGetter::getModelNamespace() . $this->getPascalCaseBlock() . '\\' . self::getConverter()->denormalize($model);
         return new $fullClass(...$args);
     }
 

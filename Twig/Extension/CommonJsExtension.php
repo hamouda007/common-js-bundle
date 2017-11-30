@@ -1,11 +1,11 @@
 <?php
 
-namespace CommonJsBundle\Twig\Extension;
+namespace Silverback\CommonJsBundle\Twig\Extension;
 
-use CommonJsBundle\Provider\BaseProvider;
-use CommonJsBundle\Provider\ProviderInterface;
-use CommonJsBundle\Renderer\TwigParamsRenderer;
-use CommonJsBundle\ServiceProvider\ServiceProvider;
+use Silverback\CommonJsBundle\Provider\BaseProvider;
+use Silverback\CommonJsBundle\Provider\ProviderInterface;
+use Silverback\CommonJsBundle\Renderer\TwigParamsRenderer;
+use Silverback\CommonJsBundle\ServiceProvider\ServiceProvider;
 
 class CommonJsExtension extends \Twig_Extension
 {

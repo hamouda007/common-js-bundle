@@ -1,8 +1,8 @@
 <?php
 
-namespace CommonJsBundle\Provider\Js;
+namespace Silverback\CommonJsBundle\Provider\Js;
 
-use CommonJsBundle\Provider\BaseProvider;
+use Silverback\CommonJsBundle\Provider\BaseProvider;
 
 final class TwitterProvider extends BaseProvider
 {}

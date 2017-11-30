@@ -1,8 +1,8 @@
 <?php
 
-namespace CommonJsBundle\Tests\Controller;
+namespace Silverback\CommonJsBundle\Tests\Controller;
 
-use CommonJsBundle\Tests\Kernel;
+use Silverback\CommonJsBundle\Tests\Kernel;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpKernel\Client;
 

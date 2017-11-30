@@ -1,8 +1,8 @@
 <?php
 
-namespace CommonJsBundle\Renderer;
+namespace Silverback\CommonJsBundle\Renderer;
 
-use CommonJsBundle\Model\TwigParams;
+use Silverback\CommonJsBundle\Model\TwigParams;
 
 class TwigParamsRenderer
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace CommonJsBundle\Model;
+namespace Silverback\CommonJsBundle\Model;
 
 class TwigParams
 {

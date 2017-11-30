@@ -1,6 +1,6 @@
 <?php
 
-namespace CommonJsBundle\Tests\Controller;
+namespace Silverback\CommonJsBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

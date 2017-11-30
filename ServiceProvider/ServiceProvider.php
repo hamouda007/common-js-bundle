@@ -1,9 +1,9 @@
 <?php
 
-namespace CommonJsBundle\ServiceProvider;
+namespace Silverback\CommonJsBundle\ServiceProvider;
 
-use CommonJsBundle\Exception\NoProviderException;
-use CommonJsBundle\Provider\ProviderInterface;
+use Silverback\CommonJsBundle\Exception\NoProviderException;
+use Silverback\CommonJsBundle\Provider\ProviderInterface;
 
 class ServiceProvider
 {

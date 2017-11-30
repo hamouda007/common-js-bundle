@@ -1,6 +1,6 @@
 {
     "name": "silverbackis/common-js-bundle",
-    "description": "Silverback Common Javascript Bundle",
+    "description": "Silverback IS Common Javascript Bundle",
     "type": "symfony-bundle",
     "license": "MIT",
     "require": {
@@ -23,12 +23,12 @@
     "minimum-stability": "RC",
     "autoload": {
         "psr-4": {
-            "CommonJsBundle\\": ""
+            "Silverback\\CommonJsBundle\\": ""
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "CommonJsBundle\\Tests\\": "Tests/"
+            "Silverback\\CommonJsBundle\\Tests\\": "Tests/"
         }
     }
 }

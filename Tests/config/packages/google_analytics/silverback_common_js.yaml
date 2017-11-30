@@ -1,4 +1,4 @@
-common_js:
+silverback_common_js:
     google_analytics:
         debug: true
         default_blocks:
