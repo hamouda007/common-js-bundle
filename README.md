@@ -42,6 +42,34 @@ unset SYMFONY_ENDPOINT
 ```
 
 ## Getting Started
+
+### Configuration
+The default configuration values will work for 90% of use cases if you simply set the environment variables (when required). Other scripts will be enabled by default.
+
+However, you may wish to create a config file to add in default blocks:
+```yaml
+# config/packages/silverback_common_js.yaml
+# Enable and configure the scripts you'd like
+silverback_common_js:
+    google_analytics:
+        default_blocks:
+            page_view: ~
+            "ec/init":
+                currency: USD
+```
+`default_blocks` can be an array of blocks you want. You can also include parameters if you want. It will pre-populate blocks in the order provided so you can just write `{{ cjs_js('name') }}` in your twig template
+
+> You cannot pass the `default_blocks` variable in via the twig template, but you can still remove and modify the default blocks from the template using `cjs_add_block()` and `cjs_remove_block()` functions
+
+Identifiers will be added as environment variables by Flex into your **.env** file.
+```dotenv
+GOOGLE_ANALYTICS_ID=
+GTM_CONTAINER_ID=
+FACEBOOK_APP_ID=
+```
+Set the IDs for these services if you want to enable them. Otherwise they will be disabled.
+
+### Example usage
 Javascript blocks can be configured directly from your twig templates using the following functions
 ```twig
 {{ cjs_add_block(name, block_name, at_block_name, before_at_block_name, override_params_object) }}
@@ -74,32 +102,6 @@ If there is an noscript fallback specified, you will want to output this at a di
 ```twig
 {{ cjs_noscript(name, override_params_object) }}
 ```
-
-### Configuration
-The default configuration values will work for 90% of use cases if you simply set the environment variables (when required). Other scripts will be enabled by default.
-
-However, you may wish to create a config file to add in default blocks:
-```yaml
-# config/packages/silverback_common_js.yaml
-# Enable and configure the scripts you'd like
-silverback_common_js:
-    google_analytics:
-        default_blocks:
-            page_view: ~
-            "ec/init":
-                currency: USD
-```
-`default_blocks` can be an array of blocks you want. You can also include parameters if you want. It will pre-populate blocks in the order provided so you can just write `{{ cjs_js('name') }}` in your twig template
-
-> You cannot pass the `default_blocks` variable in via the twig template, but you can still remove and modify the default blocks from the template using `cjs_add_block()` and `cjs_remove_block()` functions
-
-Identifiers will be added as environment variables by Flex into your **.env** file.
-```dotenv
-GOOGLE_ANALYTICS_ID=
-GTM_CONTAINER_ID=
-FACEBOOK_APP_ID=
-```
-Set the IDs for these services if you want to enable them. Otherwise they will be disabled.
 
 ### Models
 There are models available for some SDK blocks (e.g. Google Analytics Event). You can use these to easily construct and pass data to a block. All models allow you to define all the variables in the constructor (in the order they are documented here) and also have getters and setters. Examples are provided in the individual script docs.
