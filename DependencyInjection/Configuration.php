@@ -40,7 +40,7 @@ class Configuration implements ConfigurationInterface
 
     private function addGoogleAnalytics(ArrayNodeDefinition $rootNode)
     {
-        $rootNode = $this->addSDKNode($rootNode, 'google_analytics');
+        $rootNode = $this->addSDKNode($rootNode, 'google_analytics', !empty(getenv('GOOGLE_ANALYTICS_ID')));
         $rootNode
             ->scalarNode('id')->cannotBeEmpty()->defaultValue(getenv('GOOGLE_ANALYTICS_ID'))->end()
             ->scalarNode('currency')->defaultValue('GBP')->end()
@@ -52,7 +52,7 @@ class Configuration implements ConfigurationInterface
 
     private function addFacebookSdk(ArrayNodeDefinition $rootNode)
     {
-        $rootNode = $this->addSDKNode($rootNode, 'facebook_sdk');
+        $rootNode = $this->addSDKNode($rootNode, 'facebook_sdk', !empty(getenv('FACEBOOK_APP_ID')));
         $rootNode
             ->scalarNode('id')->cannotBeEmpty()->defaultValue(getenv('FACEBOOK_APP_ID'))->end()
             ->booleanNode('xfbml')->defaultTrue()->end()
@@ -66,7 +66,7 @@ class Configuration implements ConfigurationInterface
 
     private function addGtm(ArrayNodeDefinition $rootNode)
     {
-        $rootNode = $this->addSDKNode($rootNode, 'gtm');
+        $rootNode = $this->addSDKNode($rootNode, 'gtm', !empty(getenv('GTM_CONTAINER_ID')));
         $rootNode
             ->scalarNode('id')->cannotBeEmpty()->defaultValue(getenv('GTM_CONTAINER_ID'))->end()
             ->scalarNode('data_layer')->cannotBeEmpty()->defaultValue('dataLayer')->end()
@@ -77,7 +77,7 @@ class Configuration implements ConfigurationInterface
 
     private function addTwitter(ArrayNodeDefinition $rootNode)
     {
-        $rootNode = $this->addSDKNode($rootNode, 'twitter');
+        $rootNode = $this->addSDKNode($rootNode, 'twitter', false);
         $rootNode
             ->scalarNode('script_id')->cannotBeEmpty()->defaultValue('twitter-wjs')->end()
             ->scalarNode('function_name')->cannotBeEmpty()->defaultValue('twttr')->end()
@@ -85,13 +85,14 @@ class Configuration implements ConfigurationInterface
         $this->endSdkNode($rootNode);
     }
 
-    private function addSDKNode(ArrayNodeDefinition $rootNode, $nodeName = '')
+    private function addSDKNode(ArrayNodeDefinition $rootNode, $nodeName = '', bool $canBeEnabled = true)
     {
+        $canBeFunction = $canBeEnabled ? 'canBeEnabled' : 'canBeDisabled';
         return $rootNode
             ->children()
                 ->arrayNode($nodeName)
                     ->normalizeKeys(false)
-                    ->canBeEnabled()
+                    ->$canBeFunction()
                     ->children()
                         ->arrayNode('default_blocks')
                             ->normalizeKeys(false)
